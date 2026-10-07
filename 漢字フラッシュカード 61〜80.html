@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>総合 復習問題 (61-80)</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    background: linear-gradient(135deg, #fdf2f2 0%, #f7e8e8 100%);
+    margin: 0;
+    padding: 20px 10px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #app, .progress, h1 {
+    width: 100%;
+  }
+  h1 {
+    color: #c0392b;
+    font-size: 1.3rem;
+    margin: 0 0 16px 0;
+    text-align: center;
+  }
+  .progress {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+  }
+  .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #ccc;
+  }
+  .dot.current { border-color: #f1c40f; border-width: 3px; }
+  .dot.correct { background: #2ecc71; border-color: #2ecc71; }
+  .dot.incorrect { background: #e74c3c; border-color: #e74c3c; }
+
+  .card-container {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    perspective: 1200px;
+  }
+  .card {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    min-height: 260px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s, height 0.2s;
+    cursor: pointer;
+  }
+  .card.flipped {
+    transform: rotateY(180deg);
+  }
+  .face {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    text-align: center;
+    overflow-wrap: break-word;
+  }
+  .face.back {
+    transform: rotateY(180deg);
+  }
+  .qnum {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    color: #999;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+  .sentence {
+    font-size: clamp(1rem, 5vw, 1.3rem);
+    line-height: 2.3;
+    color: #333;
+    max-width: 100%;
+  }
+  .sentence ruby rt {
+    font-size: 0.55em;
+    color: #888;
+  }
+  .kana-box {
+    display: inline-block;
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 0 2px;
+    font-weight: bold;
+  }
+  .kanji-box {
+    display: inline-block;
+    border: 2px solid #27ae60;
+    color: #27ae60;
+    border-radius: 6px;
+    padding: 2px 8px;
+    margin: 0 2px;
+    font-weight: bold;
+  }
+  .reading-label {
+    margin-top: 14px;
+    color: #27ae60;
+    font-size: 0.9rem;
+  }
+  .hint {
+    margin-top: 16px;
+    color: #aaa;
+    font-size: 0.8rem;
+  }
+  .buttons {
+    display: flex;
+    gap: 14px;
+    margin: 20px auto 0 auto;
+    max-width: 420px;
+    width: 100%;
+    justify-content: center;
+  }
+  .buttons button {
+    flex: 1;
+    max-width: 160px;
+    padding: 12px 0;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+  }
+  .btn-correct { background: #2ecc71; }
+  .btn-incorrect { background: #e74c3c; }
+  .buttons button:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+  .nav {
+    margin-top: 18px;
+    color: #999;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  .summary {
+    max-width: 420px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    padding: 24px 18px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .summary h2 { color: #c0392b; }
+  .summary .score {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0 20px 0;
+  }
+  .miss-list {
+    text-align: left;
+    margin: 0 0 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .miss-list li {
+    padding: 8px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .miss-list .num { color: #999; margin-right: 8px; }
+  .miss-list .ans { color: #27ae60; font-weight: bold; }
+  .restart-btn {
+    background: #34495e;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .all-correct { color: #27ae60; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>総合 復習問題（61〜80）</h1>
+<div class="progress" id="progress"></div>
+
+<div id="app"></div>
+
+<script>
+const questions = [
+  {num:61, script:'katakana', before:'', target:'フクショク', after:'が<ruby>梅干<rt>うめぼ</rt></ruby>しだけではあまりにもわびしい。', beforeRuby:'', afterRuby:'が<ruby>梅干<rt>うめぼ</rt></ruby>しだけではあまりにもわびしい。', kanji:'副食', reading:'ふくしょく'},
+  {num:62, script:'katakana', before:'新しい仕事は', target:'タイヘン', after:'だが、やりがいがあって楽しい。', beforeRuby:'新しい仕事は', afterRuby:'だが、やりがいがあって楽しい。', kanji:'大変', reading:'たいへん'},
+  {num:63, script:'hiragana', before:'目立ったり注目を', target:'あび', after:'たりするのが苦手だ。', beforeRuby:'目立ったり注目を', afterRuby:'たりするのが苦手だ。', kanji:'浴び', reading:'あび（浴びる）'},
+  {num:64, script:'hiragana', before:'スープが', target:'さめる', after:'ので、早く<ruby>召<rt>め</rt></ruby>し上がれ。', beforeRuby:'スープが', afterRuby:'ので、早く<ruby>召<rt>め</rt></ruby>し上がれ。', kanji:'冷める', reading:'さめる'},
+  {num:65, script:'hiragana', before:'先生の<ruby>素晴<rt>すば</rt></ruby>らしい<ruby>演奏<rt>えんそう</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>を目に<ruby>焼<rt>や</rt></ruby>き', target:'つける', after:'。', beforeRuby:'先生の<ruby>素晴<rt>すば</rt></ruby>らしい<ruby>演奏<rt>えんそう</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>を目に<ruby>焼<rt>や</rt></ruby>き', afterRuby:'。', kanji:'付ける', reading:'つける'},
+  {num:66, script:'katakana', before:'牛たちはのんびりと', target:'ボクソウ', after:'を食べている。', beforeRuby:'牛たちはのんびりと', afterRuby:'を食べている。', kanji:'牧草', reading:'ぼくそう'},
+  {num:67, script:'katakana', before:'自分の立場を<ruby>明確<rt>めいかく</rt></ruby>にする', target:'ヒツヨウ', after:'がある。', beforeRuby:'自分の立場を<ruby>明確<rt>めいかく</rt></ruby>にする', afterRuby:'がある。', kanji:'必要', reading:'ひつよう'},
+  {num:68, script:'katakana', before:'', target:'ルイゴ', after:'<ruby>辞典<rt>じてん</rt></ruby>を活用して、使えることばの数を<ruby>増<rt>ふ</rt></ruby>やす。', beforeRuby:'', afterRuby:'<ruby>辞典<rt>じてん</rt></ruby>を活用して、使えることばの数を<ruby>増<rt>ふ</rt></ruby>やす。', kanji:'類語', reading:'るいご'},
+  {num:69, script:'hiragana', before:'', target:'ぎふ', after:'という地名は、<ruby>信長<rt>のぶなが</rt></ruby>の時代に中国の<ruby>故事<rt>こじ</rt></ruby>にもとづいてつけられた。', beforeRuby:'', afterRuby:'という地名は、<ruby>信長<rt>のぶなが</rt></ruby>の時代に中国の<ruby>故事<rt>こじ</rt></ruby>にもとづいてつけられた。', kanji:'岐阜', reading:'ぎふ'},
+  {num:70, script:'hiragana', before:'<ruby>田舎<rt>いなか</rt></ruby>に住むいとこから', target:'たより', after:'が来る。', beforeRuby:'<ruby>田舎<rt>いなか</rt></ruby>に住むいとこから', afterRuby:'が来る。', kanji:'便り', reading:'たより'},
+  {num:71, script:'katakana', before:'<ruby>津田沼<rt>つだぬま</rt></ruby>さんと<ruby>映画<rt>えいが</rt></ruby>を<ruby>観<rt>み</rt></ruby>に行く', target:'ヤクソク', after:'をした。', beforeRuby:'<ruby>津田沼<rt>つだぬま</rt></ruby>さんと<ruby>映画<rt>えいが</rt></ruby>を<ruby>観<rt>み</rt></ruby>に行く', afterRuby:'をした。', kanji:'約束', reading:'やくそく'},
+  {num:72, script:'katakana', before:'<ruby>燃<rt>も</rt></ruby>えにくい', target:'ザイリョウ', after:'を使って家を<ruby>建<rt>た</rt></ruby>てる。', beforeRuby:'<ruby>燃<rt>も</rt></ruby>えにくい', afterRuby:'を使って家を<ruby>建<rt>た</rt></ruby>てる。', kanji:'材料', reading:'ざいりょう'},
+  {num:73, script:'katakana', before:'<ruby>明治<rt>めいじ</rt></ruby>時代になると、<ruby>欧米<rt>おうべい</rt></ruby>に追いつくよう', target:'フコクキョウヘイ', after:'<ruby>政策<rt>せいさく</rt></ruby>が進められた。', beforeRuby:'<ruby>明治<rt>めいじ</rt></ruby>時代になると、<ruby>欧米<rt>おうべい</rt></ruby>に追いつくよう', afterRuby:'<ruby>政策<rt>せいさく</rt></ruby>が進められた。', kanji:'富国強兵', reading:'ふこくきょうへい'},
+  {num:74, script:'katakana', before:'', target:'マンカイ', after:'の<ruby>藤<rt>ふじ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>にはなんとも言えない<ruby>迫力<rt>はくりょく</rt></ruby>がある。', beforeRuby:'', afterRuby:'の<ruby>藤<rt>ふじ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>にはなんとも言えない<ruby>迫力<rt>はくりょく</rt></ruby>がある。', kanji:'満開', reading:'まんかい'},
+  {num:75, script:'katakana', before:'冬場の', target:'ヨクシツ', after:'は寒すぎて、お<ruby>年<rt>とし</rt></ruby><ruby>寄<rt>よ</rt></ruby>りの<ruby>事故<rt>じこ</rt></ruby>が起こりやすい。', beforeRuby:'冬場の', afterRuby:'は寒すぎて、お<ruby>年<rt>とし</rt></ruby><ruby>寄<rt>よ</rt></ruby>りの<ruby>事故<rt>じこ</rt></ruby>が起こりやすい。', kanji:'浴室', reading:'よくしつ'},
+  {num:76, script:'katakana', before:'自らの行いを<ruby>省<rt>かえり</rt></ruby>みて、', target:'リョウシン', after:'に<ruby>恥<rt>は</rt></ruby>じないようにふるまう。', beforeRuby:'自らの行いを<ruby>省<rt>かえり</rt></ruby>みて、', afterRuby:'に<ruby>恥<rt>は</rt></ruby>じないようにふるまう。', kanji:'良心', reading:'りょうしん'},
+  {num:77, script:'katakana', before:'子どもたちは<ruby>無邪気<rt>むじゃき</rt></ruby>に', target:'ヘイタイ', after:'ごっこに<ruby>興<rt>きょう</rt></ruby>じていた。', beforeRuby:'子どもたちは<ruby>無邪気<rt>むじゃき</rt></ruby>に', afterRuby:'ごっこに<ruby>興<rt>きょう</rt></ruby>じていた。', kanji:'兵隊', reading:'へいたい'},
+  {num:78, script:'katakana', before:'世界一<ruby>面積<rt>めんせき</rt></ruby>が広いのはユーラシア', target:'タイリク', after:'だ。', beforeRuby:'世界一<ruby>面積<rt>めんせき</rt></ruby>が広いのはユーラシア', afterRuby:'だ。', kanji:'大陸', reading:'たいりく'},
+  {num:79, script:'hiragana', before:'出会いがあればいつか', target:'わかれ', after:'もあるものだ。', beforeRuby:'出会いがあればいつか', afterRuby:'もあるものだ。', kanji:'別れ', reading:'わかれ'},
+  {num:80, script:'katakana', before:'<ruby>追加<rt>ついか</rt></ruby>の', target:'リョウキン', after:'を<ruby>支払<rt>しはら</rt></ruby>ってもう一<ruby>泊<rt>ぱく</rt></ruby>した。', beforeRuby:'<ruby>追加<rt>ついか</rt></ruby>の', afterRuby:'を<ruby>支払<rt>しはら</rt></ruby>ってもう一<ruby>泊<rt>ぱく</rt></ruby>した。', kanji:'料金', reading:'りょうきん'}
+];
+
+let current = 0;
+let flipped = false;
+let results = new Array(questions.length).fill(null);
+
+function renderProgress() {
+  const p = document.getElementById('progress');
+  p.innerHTML = '';
+  questions.forEach((q, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot';
+    if (results[i] === 'correct') d.className += ' correct';
+    else if (results[i] === 'incorrect') d.className += ' incorrect';
+    if (i === current && results[i] === null) d.className += ' current';
+    p.appendChild(d);
+  });
+}
+
+function renderCard() {
+  const app = document.getElementById('app');
+  if (current >= questions.length) {
+    renderSummary();
+    return;
+  }
+  const q = questions[current];
+  flipped = false;
+  app.innerHTML = `
+    <div class="card-container">
+      <div class="card" id="card">
+        <div class="face front">
+          <div class="qnum">${q.num}</div>
+          <div class="sentence">${q.before}<span class="kana-box">${q.target}</span>${q.after}</div>
+          <div class="hint">タップして答えを見る</div>
+        </div>
+        <div class="face back">
+          <div class="qnum">${q.num}</div>
+          <div class="sentence">${q.beforeRuby}<span class="kanji-box">${q.kanji}</span>${q.afterRuby}</div>
+          <div class="reading-label">${q.reading}</div>
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn-correct" id="btnCorrect" disabled>正解</button>
+      <button class="btn-incorrect" id="btnIncorrect" disabled>間違えた</button>
+    </div>
+    <div class="nav">${current + 1} / ${questions.length}</div>
+  `;
+  const card = document.getElementById('card');
+  adjustCardHeight();
+  card.addEventListener('click', () => {
+    if (!flipped) {
+      flipped = true;
+      card.classList.add('flipped');
+      document.getElementById('btnCorrect').disabled = false;
+      document.getElementById('btnIncorrect').disabled = false;
+    }
+  });
+  document.getElementById('btnCorrect').addEventListener('click', (e) => {
+    e.stopPropagation();
+    mark('correct');
+  });
+  document.getElementById('btnIncorrect').addEventListener('click', (e) => {
+    e.stopPropagation();
+    mark('incorrect');
+  });
+  renderProgress();
+}
+
+function adjustCardHeight() {
+  const card = document.getElementById('card');
+  if (!card) return;
+  const front = card.querySelector('.face.front');
+  const back = card.querySelector('.face.back');
+  if (!front || !back) return;
+  const prevFrontH = front.style.height, prevBackH = back.style.height;
+  front.style.height = 'auto';
+  back.style.height = 'auto';
+  const h = Math.max(front.scrollHeight, back.scrollHeight, 260);
+  front.style.height = prevFrontH;
+  back.style.height = prevBackH;
+  card.style.height = h + 'px';
+}
+
+window.addEventListener('resize', adjustCardHeight);
+
+function mark(result) {
+  results[current] = result;
+  current++;
+  renderCard();
+}
+
+function renderSummary() {
+  const app = document.getElementById('app');
+  const missed = questions.filter((q, i) => results[i] === 'incorrect');
+  const correctCount = results.filter(r => r === 'correct').length;
+  let missHtml = '';
+  if (missed.length === 0) {
+    missHtml = '<p class="all-correct">全問正解！お見事です 🎉</p>';
+  } else {
+    missHtml = '<ul class="miss-list">' + missed.map(q =>
+      `<li><span><span class="num">${q.num}.</span>${q.target}</span><span class="ans">${q.kanji}</span></li>`
+    ).join('') + '</ul>';
+  }
+  app.innerHTML = `
+    <div class="summary">
+      <h2>結果</h2>
+      <div class="score">${correctCount} / ${questions.length} 問正解</div>
+      ${missHtml}
+      <button class="restart-btn" id="restartBtn">もう一度</button>
+    </div>
+  `;
+  document.getElementById('restartBtn').addEventListener('click', restart);
+  document.getElementById('progress').innerHTML = '';
+}
+
+function restart() {
+  current = 0;
+  results = new Array(questions.length).fill(null);
+  renderCard();
+}
+
+renderCard();
+</script>
+
+</body>
+</html>
