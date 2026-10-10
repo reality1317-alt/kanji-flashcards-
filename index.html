@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>総合 復習問題 (61-80)</title>
+<title>確認問題 第6回 (1-20)</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -207,33 +207,33 @@
 </head>
 <body>
 
-<h1>総合 復習問題（61〜80）</h1>
+<h1>確認問題 第6回（1〜20）</h1>
 <div class="progress" id="progress"></div>
 
 <div id="app"></div>
 
 <script>
 const questions = [
-  {num:61, script:'katakana', before:'', target:'フクショク', after:'が<ruby>梅干<rt>うめぼ</rt></ruby>しだけではあまりにもわびしい。', beforeRuby:'', afterRuby:'が<ruby>梅干<rt>うめぼ</rt></ruby>しだけではあまりにもわびしい。', kanji:'副食', reading:'ふくしょく'},
-  {num:62, script:'katakana', before:'新しい仕事は', target:'タイヘン', after:'だが、やりがいがあって楽しい。', beforeRuby:'新しい仕事は', afterRuby:'だが、やりがいがあって楽しい。', kanji:'大変', reading:'たいへん'},
-  {num:63, script:'hiragana', before:'目立ったり注目を', target:'あび', after:'たりするのが苦手だ。', beforeRuby:'目立ったり注目を', afterRuby:'たりするのが苦手だ。', kanji:'浴び', reading:'あび（浴びる）'},
-  {num:64, script:'hiragana', before:'スープが', target:'さめる', after:'ので、早く<ruby>召<rt>め</rt></ruby>し上がれ。', beforeRuby:'スープが', afterRuby:'ので、早く<ruby>召<rt>め</rt></ruby>し上がれ。', kanji:'冷める', reading:'さめる'},
-  {num:65, script:'hiragana', before:'先生の<ruby>素晴<rt>すば</rt></ruby>らしい<ruby>演奏<rt>えんそう</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>を目に<ruby>焼<rt>や</rt></ruby>き', target:'つける', after:'。', beforeRuby:'先生の<ruby>素晴<rt>すば</rt></ruby>らしい<ruby>演奏<rt>えんそう</rt></ruby><ruby>技術<rt>ぎじゅつ</rt></ruby>を目に<ruby>焼<rt>や</rt></ruby>き', afterRuby:'。', kanji:'付ける', reading:'つける'},
-  {num:66, script:'katakana', before:'牛たちはのんびりと', target:'ボクソウ', after:'を食べている。', beforeRuby:'牛たちはのんびりと', afterRuby:'を食べている。', kanji:'牧草', reading:'ぼくそう'},
-  {num:67, script:'katakana', before:'自分の立場を<ruby>明確<rt>めいかく</rt></ruby>にする', target:'ヒツヨウ', after:'がある。', beforeRuby:'自分の立場を<ruby>明確<rt>めいかく</rt></ruby>にする', afterRuby:'がある。', kanji:'必要', reading:'ひつよう'},
-  {num:68, script:'katakana', before:'', target:'ルイゴ', after:'<ruby>辞典<rt>じてん</rt></ruby>を活用して、使えることばの数を<ruby>増<rt>ふ</rt></ruby>やす。', beforeRuby:'', afterRuby:'<ruby>辞典<rt>じてん</rt></ruby>を活用して、使えることばの数を<ruby>増<rt>ふ</rt></ruby>やす。', kanji:'類語', reading:'るいご'},
-  {num:69, script:'hiragana', before:'', target:'ぎふ', after:'という地名は、<ruby>信長<rt>のぶなが</rt></ruby>の時代に中国の<ruby>故事<rt>こじ</rt></ruby>にもとづいてつけられた。', beforeRuby:'', afterRuby:'という地名は、<ruby>信長<rt>のぶなが</rt></ruby>の時代に中国の<ruby>故事<rt>こじ</rt></ruby>にもとづいてつけられた。', kanji:'岐阜', reading:'ぎふ'},
-  {num:70, script:'hiragana', before:'<ruby>田舎<rt>いなか</rt></ruby>に住むいとこから', target:'たより', after:'が来る。', beforeRuby:'<ruby>田舎<rt>いなか</rt></ruby>に住むいとこから', afterRuby:'が来る。', kanji:'便り', reading:'たより'},
-  {num:71, script:'katakana', before:'<ruby>津田沼<rt>つだぬま</rt></ruby>さんと<ruby>映画<rt>えいが</rt></ruby>を<ruby>観<rt>み</rt></ruby>に行く', target:'ヤクソク', after:'をした。', beforeRuby:'<ruby>津田沼<rt>つだぬま</rt></ruby>さんと<ruby>映画<rt>えいが</rt></ruby>を<ruby>観<rt>み</rt></ruby>に行く', afterRuby:'をした。', kanji:'約束', reading:'やくそく'},
-  {num:72, script:'katakana', before:'<ruby>燃<rt>も</rt></ruby>えにくい', target:'ザイリョウ', after:'を使って家を<ruby>建<rt>た</rt></ruby>てる。', beforeRuby:'<ruby>燃<rt>も</rt></ruby>えにくい', afterRuby:'を使って家を<ruby>建<rt>た</rt></ruby>てる。', kanji:'材料', reading:'ざいりょう'},
-  {num:73, script:'katakana', before:'<ruby>明治<rt>めいじ</rt></ruby>時代になると、<ruby>欧米<rt>おうべい</rt></ruby>に追いつくよう', target:'フコクキョウヘイ', after:'<ruby>政策<rt>せいさく</rt></ruby>が進められた。', beforeRuby:'<ruby>明治<rt>めいじ</rt></ruby>時代になると、<ruby>欧米<rt>おうべい</rt></ruby>に追いつくよう', afterRuby:'<ruby>政策<rt>せいさく</rt></ruby>が進められた。', kanji:'富国強兵', reading:'ふこくきょうへい'},
-  {num:74, script:'katakana', before:'', target:'マンカイ', after:'の<ruby>藤<rt>ふじ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>にはなんとも言えない<ruby>迫力<rt>はくりょく</rt></ruby>がある。', beforeRuby:'', afterRuby:'の<ruby>藤<rt>ふじ</rt></ruby>の<ruby>花<rt>はな</rt></ruby>にはなんとも言えない<ruby>迫力<rt>はくりょく</rt></ruby>がある。', kanji:'満開', reading:'まんかい'},
-  {num:75, script:'katakana', before:'冬場の', target:'ヨクシツ', after:'は寒すぎて、お<ruby>年<rt>とし</rt></ruby><ruby>寄<rt>よ</rt></ruby>りの<ruby>事故<rt>じこ</rt></ruby>が起こりやすい。', beforeRuby:'冬場の', afterRuby:'は寒すぎて、お<ruby>年<rt>とし</rt></ruby><ruby>寄<rt>よ</rt></ruby>りの<ruby>事故<rt>じこ</rt></ruby>が起こりやすい。', kanji:'浴室', reading:'よくしつ'},
-  {num:76, script:'katakana', before:'自らの行いを<ruby>省<rt>かえり</rt></ruby>みて、', target:'リョウシン', after:'に<ruby>恥<rt>は</rt></ruby>じないようにふるまう。', beforeRuby:'自らの行いを<ruby>省<rt>かえり</rt></ruby>みて、', afterRuby:'に<ruby>恥<rt>は</rt></ruby>じないようにふるまう。', kanji:'良心', reading:'りょうしん'},
-  {num:77, script:'katakana', before:'子どもたちは<ruby>無邪気<rt>むじゃき</rt></ruby>に', target:'ヘイタイ', after:'ごっこに<ruby>興<rt>きょう</rt></ruby>じていた。', beforeRuby:'子どもたちは<ruby>無邪気<rt>むじゃき</rt></ruby>に', afterRuby:'ごっこに<ruby>興<rt>きょう</rt></ruby>じていた。', kanji:'兵隊', reading:'へいたい'},
-  {num:78, script:'katakana', before:'世界一<ruby>面積<rt>めんせき</rt></ruby>が広いのはユーラシア', target:'タイリク', after:'だ。', beforeRuby:'世界一<ruby>面積<rt>めんせき</rt></ruby>が広いのはユーラシア', afterRuby:'だ。', kanji:'大陸', reading:'たいりく'},
-  {num:79, script:'hiragana', before:'出会いがあればいつか', target:'わかれ', after:'もあるものだ。', beforeRuby:'出会いがあればいつか', afterRuby:'もあるものだ。', kanji:'別れ', reading:'わかれ'},
-  {num:80, script:'katakana', before:'<ruby>追加<rt>ついか</rt></ruby>の', target:'リョウキン', after:'を<ruby>支払<rt>しはら</rt></ruby>ってもう一<ruby>泊<rt>ぱく</rt></ruby>した。', beforeRuby:'<ruby>追加<rt>ついか</rt></ruby>の', afterRuby:'を<ruby>支払<rt>しはら</rt></ruby>ってもう一<ruby>泊<rt>ぱく</rt></ruby>した。', kanji:'料金', reading:'りょうきん'}
+  {"num": 1, "script": "kata", "before": "", "target": "コクエイ", "after": "の<ruby>施設<rt>しせつ</rt></ruby>を使って<ruby>試合<rt>しあい</rt></ruby>をする。", "beforeRuby": "", "afterRuby": "の<ruby>施設<rt>しせつ</rt></ruby>を使って<ruby>試合<rt>しあい</rt></ruby>をする。", "kanji": "国営", "reading": "こくえい"},
+  {"num": 2, "script": "kata", "before": "都会から<ruby>田舎<rt>いなか</rt></ruby>に", "target": "イジュウ", "after": "する人が<ruby>増<rt>ふ</rt></ruby>えている。", "beforeRuby": "都会から<ruby>田舎<rt>いなか</rt></ruby>に", "afterRuby": "する人が<ruby>増<rt>ふ</rt></ruby>えている。", "kanji": "移住", "reading": "いじゅう"},
+  {"num": 3, "script": "kata", "before": "<ruby>機械<rt>きかい</rt></ruby>のおかげで", "target": "ロウリョク", "after": "を<ruby>省<rt>はぶ</rt></ruby>くことができる。", "beforeRuby": "<ruby>機械<rt>きかい</rt></ruby>のおかげで", "afterRuby": "を<ruby>省<rt>はぶ</rt></ruby>くことができる。", "kanji": "労力", "reading": "ろうりょく"},
+  {"num": 4, "script": "hira", "before": "今後も", "target": "すえながく", "after": "お<ruby>付<rt>つ</rt></ruby>き<ruby>合<rt>あ</rt></ruby>いください。", "beforeRuby": "今後も", "afterRuby": "お<ruby>付<rt>つ</rt></ruby>き<ruby>合<rt>あ</rt></ruby>いください。", "kanji": "末永く", "reading": "すえながく"},
+  {"num": 5, "script": "kata", "before": "", "target": "ジエイタイ", "after": "が<ruby>災害<rt>さいがい</rt></ruby><ruby>派遣<rt>はけん</rt></ruby>に出動した。", "beforeRuby": "", "afterRuby": "が<ruby>災害<rt>さいがい</rt></ruby><ruby>派遣<rt>はけん</rt></ruby>に出動した。", "kanji": "自衛隊", "reading": "じえいたい"},
+  {"num": 6, "script": "kata", "before": "中野さんの電話番号を<ruby>携帯<rt>けいたい</rt></ruby>に", "target": "トウロク", "after": "する。", "beforeRuby": "中野さんの電話番号を<ruby>携帯<rt>けいたい</rt></ruby>に", "afterRuby": "する。", "kanji": "登録", "reading": "とうろく"},
+  {"num": 7, "script": "kata", "before": "<ruby>潮風<rt>しおかぜ</rt></ruby>が<ruby>鉄骨<rt>てっこつ</rt></ruby>の<ruby>錆<rt>さび</rt></ruby>の", "target": "ゲンイン", "after": "になる。", "beforeRuby": "<ruby>潮風<rt>しおかぜ</rt></ruby>が<ruby>鉄骨<rt>てっこつ</rt></ruby>の<ruby>錆<rt>さび</rt></ruby>の", "afterRuby": "になる。", "kanji": "原因", "reading": "げんいん"},
+  {"num": 8, "script": "kata", "before": "<ruby>試合<rt>しあい</rt></ruby>に負けられないという思いが", "target": "ジュウアツ", "after": "となってのしかかる。", "beforeRuby": "<ruby>試合<rt>しあい</rt></ruby>に負けられないという思いが", "afterRuby": "となってのしかかる。", "kanji": "重圧", "reading": "じゅうあつ"},
+  {"num": 9, "script": "kata", "before": "エミリーは日本に", "target": "エイジュウ", "after": "することに決めた。", "beforeRuby": "エミリーは日本に", "afterRuby": "することに決めた。", "kanji": "永住", "reading": "えいじゅう"},
+  {"num": 10, "script": "hira", "before": "", "target": "やさしい", "after": "<ruby>英語<rt>えいご</rt></ruby>で書かれた本を読む。", "beforeRuby": "", "afterRuby": "<ruby>英語<rt>えいご</rt></ruby>で書かれた本を読む。", "kanji": "易しい", "reading": "やさしい"},
+  {"num": 11, "script": "kata", "before": "<ruby>宮殿<rt>きゅうでん</rt></ruby>の前で行われる", "target": "エイヘイ", "after": "の交代式を見る。", "beforeRuby": "<ruby>宮殿<rt>きゅうでん</rt></ruby>の前で行われる", "afterRuby": "の交代式を見る。", "kanji": "衛兵", "reading": "えいへい"},
+  {"num": 12, "script": "kata", "before": "<ruby>危<rt>あぶ</rt></ruby>ないので、池の", "target": "シュウイ", "after": "では遊ばないように。", "beforeRuby": "<ruby>危<rt>あぶ</rt></ruby>ないので、池の", "afterRuby": "では遊ばないように。", "kanji": "周囲", "reading": "しゅうい"},
+  {"num": 13, "script": "kata", "before": "<ruby>試合<rt>しあい</rt></ruby>の", "target": "ハイイン", "after": "を考えて練習方法を<ruby>変<rt>か</rt></ruby>える。", "beforeRuby": "<ruby>試合<rt>しあい</rt></ruby>の", "afterRuby": "を考えて練習方法を<ruby>変<rt>か</rt></ruby>える。", "kanji": "敗因", "reading": "はいいん"},
+  {"num": 14, "script": "hira", "before": "教室に入ってきた先生が<ruby>生徒<rt>せいと</rt></ruby>たちに", "target": "かこまれる", "after": "。", "beforeRuby": "教室に入ってきた先生が<ruby>生徒<rt>せいと</rt></ruby>たちに", "afterRuby": "。", "kanji": "囲まれる", "reading": "かこまれる"},
+  {"num": 15, "script": "kata", "before": "子どもにもわかるように", "target": "ヘイイ", "after": "な言葉で話す。", "beforeRuby": "子どもにもわかるように", "afterRuby": "な言葉で話す。", "kanji": "平易", "reading": "へいい"},
+  {"num": 16, "script": "kata", "before": "校長先生に<ruby>卒業<rt>そつぎょう</rt></ruby><ruby>記念品<rt>きねんひん</rt></ruby>の", "target": "モクロク", "after": "を<ruby>手渡<rt>てわた</rt></ruby>す。", "beforeRuby": "校長先生に<ruby>卒業<rt>そつぎょう</rt></ruby><ruby>記念品<rt>きねんひん</rt></ruby>の", "afterRuby": "を<ruby>手渡<rt>てわた</rt></ruby>す。", "kanji": "目録", "reading": "もくろく"},
+  {"num": 17, "script": "kata", "before": "<ruby>結婚式<rt>けっこんしき</rt></ruby>に<ruby>参列<rt>さんれつ</rt></ruby>した人々の前で", "target": "エイエン", "after": "の<ruby>愛<rt>あい</rt></ruby>をちかう。", "beforeRuby": "<ruby>結婚式<rt>けっこんしき</rt></ruby>に<ruby>参列<rt>さんれつ</rt></ruby>した人々の前で", "afterRuby": "の<ruby>愛<rt>あい</rt></ruby>をちかう。", "kanji": "永遠", "reading": "えいえん"},
+  {"num": 18, "script": "kata", "before": "", "target": "ケツアツ", "after": "が高いので、<ruby>塩分<rt>えんぶん</rt></ruby>を<ruby>控<rt>ひか</rt></ruby>えている。", "beforeRuby": "", "afterRuby": "が高いので、<ruby>塩分<rt>えんぶん</rt></ruby>を<ruby>控<rt>ひか</rt></ruby>えている。", "kanji": "血圧", "reading": "けつあつ"},
+  {"num": 19, "script": "kata", "before": "<ruby>季節<rt>きせつ</rt></ruby>ごとに、山と里を", "target": "イドウ", "after": "する鳥たち。", "beforeRuby": "<ruby>季節<rt>きせつ</rt></ruby>ごとに、山と里を", "afterRuby": "する鳥たち。", "kanji": "移動", "reading": "いどう"},
+  {"num": 20, "script": "kata", "before": "中学<ruby>入試<rt>にゅうし</rt></ruby>を", "target": "アンイ", "after": "に考えてはいけない。", "beforeRuby": "中学<ruby>入試<rt>にゅうし</rt></ruby>を", "afterRuby": "に考えてはいけない。", "kanji": "安易", "reading": "あんい"}
 ];
 
 let current = 0;
