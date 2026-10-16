@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>確認問題 (21-40)</title>
+<title>確認問題 第7回 (1-20)</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -207,33 +207,53 @@
 </head>
 <body>
 
-<h1>確認問題（21〜40）</h1>
+<h1>確認問題 第7回（1〜20）</h1>
 <div class="progress" id="progress"></div>
 
 <div id="app"></div>
 
 <script>
 const questions = [
-  {"num": 21, "script": "", "before": "<ruby>西高東低<rt>せいこうとうてい</rt></ruby>の<ruby>冬型<rt>ふゆがた</rt></ruby>の", "target": "キアツ", "after": "<ruby>配置<rt>はいち</rt></ruby>が強まる。", "beforeRuby": "<ruby>西高東低<rt>せいこうとうてい</rt></ruby>の<ruby>冬型<rt>ふゆがた</rt></ruby>の", "afterRuby": "<ruby>配置<rt>はいち</rt></ruby>が強まる。", "kanji": "気圧", "reading": "きあつ"},
-  {"num": 22, "script": "", "before": "北海道で<ruby>乳牛<rt>にゅうぎゅう</rt></ruby>を育てる<ruby>牧場<rt>ぼくじょう</rt></ruby>を", "target": "いとなむ", "after": "。", "beforeRuby": "北海道で<ruby>乳牛<rt>にゅうぎゅう</rt></ruby>を育てる<ruby>牧場<rt>ぼくじょう</rt></ruby>を", "afterRuby": "。", "kanji": "営む", "reading": "営む（いとなむ）"},
-  {"num": 23, "script": "", "before": "流行は、時代とともに", "target": "うつり", "after": "かわる。", "beforeRuby": "流行は、時代とともに", "afterRuby": "かわる。", "kanji": "移り", "reading": "移り変わる（うつりかわる）"},
-  {"num": 24, "script": "", "before": "<ruby>喫煙<rt>きつえん</rt></ruby>とがんには", "target": "インガ", "after": "<ruby>関係<rt>かんけい</rt></ruby>があるそうだ。", "beforeRuby": "<ruby>喫煙<rt>きつえん</rt></ruby>とがんには", "afterRuby": "<ruby>関係<rt>かんけい</rt></ruby>があるそうだ。", "kanji": "因果", "reading": "因果（いんが）"},
-  {"num": 25, "script": "", "before": "<ruby>演奏<rt>えんそう</rt></ruby>を", "target": "ロクオン", "after": "し、聞き返す。", "beforeRuby": "<ruby>演奏<rt>えんそう</rt></ruby>を", "afterRuby": "し、聞き返す。", "kanji": "録音", "reading": "録音（ろくおん）"},
-  {"num": 26, "script": "", "before": "<ruby>敵<rt>てき</rt></ruby>の<ruby>軍隊<rt>ぐんたい</rt></ruby>が町を", "target": "ホウイ", "after": "する。", "beforeRuby": "<ruby>敵<rt>てき</rt></ruby>の<ruby>軍隊<rt>ぐんたい</rt></ruby>が町を", "afterRuby": "する。", "kanji": "包囲", "reading": "包囲（ほうい）"},
-  {"num": 27, "script": "", "before": "", "target": "ロウドウ", "after": "に対する<ruby>賃金<rt>ちんぎん</rt></ruby>を<ruby>支払<rt>しはら</rt></ruby>う。", "beforeRuby": "", "afterRuby": "に対する<ruby>賃金<rt>ちんぎん</rt></ruby>を<ruby>支払<rt>しはら</rt></ruby>う。", "kanji": "労働", "reading": "労働（ろうどう）"},
-  {"num": 28, "script": "", "before": "朝早くから", "target": "エイギョウ", "after": "している<ruby>食堂<rt>しょくどう</rt></ruby>。", "beforeRuby": "朝早くから", "afterRuby": "している<ruby>食堂<rt>しょくどう</rt></ruby>。", "kanji": "営業", "reading": "営業（えいぎょう）"},
-  {"num": 29, "script": "", "before": "村の生活は古くからの", "target": "インシュウ", "after": "にしばられている。", "beforeRuby": "村の生活は古くからの", "afterRuby": "にしばられている。", "kanji": "因習", "reading": "因習（いんしゅう）"},
-  {"num": 30, "script": "", "before": "練りに練った計画をいよいよ実行に", "target": "うつす", "after": "。", "beforeRuby": "練りに練った計画をいよいよ実行に", "afterRuby": "。", "kanji": "移す", "reading": "移す（うつす）"},
-  {"num": 31, "script": "", "before": "シルクロードを通って、東西の", "target": "コウエキ", "after": "が行われた。", "beforeRuby": "シルクロードを通って、東西の", "afterRuby": "が行われた。", "kanji": "交易", "reading": "交易（こうえき）"},
-  {"num": 32, "script": "", "before": "世界の", "target": "エイゾク", "after": "<ruby>的<rt>てき</rt></ruby>な平和のために活動する。", "beforeRuby": "世界の", "afterRuby": "<ruby>的<rt>てき</rt></ruby>な平和のために活動する。", "kanji": "永続", "reading": "永続（えいぞく）"},
-  {"num": 33, "script": "", "before": "長年の", "target": "クロウ", "after": "が<ruby>報<rt>むく</rt></ruby>われて<ruby>表彰<rt>ひょうしょう</rt></ruby>される。", "beforeRuby": "長年の", "afterRuby": "が<ruby>報<rt>むく</rt></ruby>われて<ruby>表彰<rt>ひょうしょう</rt></ruby>される。", "kanji": "苦労", "reading": "苦労（くろう）"},
-  {"num": 34, "script": "", "before": "身の回りを<ruby>清潔<rt>せいけつ</rt></ruby>にして", "target": "エイセイ", "after": "<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>保<rt>たも</rt></ruby>つ。", "beforeRuby": "身の回りを<ruby>清潔<rt>せいけつ</rt></ruby>にして", "afterRuby": "<ruby>状態<rt>じょうたい</rt></ruby>を<ruby>保<rt>たも</rt></ruby>つ。", "kanji": "衛生", "reading": "衛生（えいせい）"},
-  {"num": 35, "script": "", "before": "", "target": "アツリョク", "after": "<ruby>鍋<rt>なべ</rt></ruby>を使ってやわらかく<ruby>煮<rt>に</rt></ruby>る。", "beforeRuby": "", "afterRuby": "<ruby>鍋<rt>なべ</rt></ruby>を使ってやわらかく<ruby>煮<rt>に</rt></ruby>る。", "kanji": "圧力", "reading": "圧力（あつりょく）"},
-  {"num": 36, "script": "", "before": "<ruby>祖父<rt>そふ</rt></ruby>の死後、<ruby>祖母<rt>そぼ</rt></ruby>は", "target": "シンロウ", "after": "が重なり、体調をくずしてしまった。", "beforeRuby": "<ruby>祖父<rt>そふ</rt></ruby>の死後、<ruby>祖母<rt>そぼ</rt></ruby>は", "afterRuby": "が重なり、体調をくずしてしまった。", "kanji": "心労", "reading": "心労（しんろう）"},
-  {"num": 37, "script": "", "before": "父は<ruby>食品輸入<rt>しょくひんゆにゅう</rt></ruby>会社を<ruby>経<rt>けい</rt></ruby>", "target": "エイ", "after": "している。", "beforeRuby": "父は<ruby>食品輸入<rt>しょくひんゆにゅう</rt></ruby>会社を<ruby>経<rt>けい</rt></ruby>", "afterRuby": "している。", "kanji": "営", "reading": "経営（けいえい）"},
-  {"num": 38, "script": "", "before": "落ち葉を集めて、みんなでたき火を", "target": "かこ", "after": "む。", "beforeRuby": "落ち葉を集めて、みんなでたき火を", "afterRuby": "む。", "kanji": "囲", "reading": "囲む（かこむ）"},
-  {"num": 39, "script": "", "before": "マラソン大会で<ruby>自己<rt>じこ</rt></ruby>の", "target": "キロク", "after": "を<ruby>更新<rt>こうしん</rt></ruby>し、<ruby>優勝<rt>ゆうしょう</rt></ruby>した。", "beforeRuby": "マラソン大会で<ruby>自己<rt>じこ</rt></ruby>の", "afterRuby": "を<ruby>更新<rt>こうしん</rt></ruby>し、<ruby>優勝<rt>ゆうしょう</rt></ruby>した。", "kanji": "記録", "reading": "記録（きろく）"},
-  {"num": 40, "script": "", "before": "<ruby>宇宙人<rt>うちゅうじん</rt></ruby>の<ruby>攻撃<rt>こうげき</rt></ruby>に<ruby>備<rt>そな</rt></ruby>え、地球<ruby>防<rt>ぼう</rt></ruby>", "target": "エイ", "after": "<ruby>隊<rt>たい</rt></ruby>がつくられた。", "beforeRuby": "<ruby>宇宙人<rt>うちゅうじん</rt></ruby>の<ruby>攻撃<rt>こうげき</rt></ruby>に<ruby>備<rt>そな</rt></ruby>え、地球<ruby>防<rt>ぼう</rt></ruby>", "afterRuby": "<ruby>隊<rt>たい</rt></ruby>がつくられた。", "kanji": "衛", "reading": "防衛（ぼうえい）"}
+  {num:1, script:'hira', before:'風に<ruby>散<rt>ち</rt></ruby>る花びらで水面が', target:'さくらいろ', after:'に<ruby>染<rt>そ</rt></ruby>まる。',
+   beforeRuby:'風に<ruby>散<rt>ち</rt></ruby>る花びらで水面が', afterRuby:'に<ruby>染<rt>そ</rt></ruby>まる。', kanji:'桜色', reading:'桜色（さくらいろ）'},
+  {num:2, script:'kata', before:'町の中心部を流れる', target:'タイガ', after:'。',
+   beforeRuby:'町の中心部を流れる', afterRuby:'。', kanji:'大河', reading:'大河（たいが）'},
+  {num:3, script:'kata', before:'石油<ruby>危機<rt>きき</rt></ruby>で', target:'ブッカ', after:'が上がり、生活が苦しくなる。',
+   beforeRuby:'石油<ruby>危機<rt>きき</rt></ruby>で', afterRuby:'が上がり、生活が苦しくなる。', kanji:'物価', reading:'物価（ぶっか）'},
+  {num:4, script:'kata', before:'<ruby>呼<rt>よ</rt></ruby>び<ruby>鈴<rt>りん</rt></ruby>を鳴らしても', target:'オウトウ', after:'がなかった。',
+   beforeRuby:'<ruby>呼<rt>よ</rt></ruby>び<ruby>鈴<rt>りん</rt></ruby>を鳴らしても', afterRuby:'がなかった。', kanji:'応答', reading:'応答（おうとう）'},
+  {num:5, script:'kata', before:'たくさんの<ruby>人前<rt>ひとまえ</rt></ruby>で', target:'エンゼツ', after:'するのは<ruby>勇気<rt>ゆうき</rt></ruby>がいる。',
+   beforeRuby:'たくさんの<ruby>人前<rt>ひとまえ</rt></ruby>で', afterRuby:'するのは<ruby>勇気<rt>ゆうき</rt></ruby>がいる。', kanji:'演説', reading:'演説（えんぜつ）'},
+  {num:6, script:'kata', before:'先生の<ruby>許<rt>きょ</rt></ruby>', target:'カ', after:'を<ruby>得<rt>え</rt></ruby>て練習を休む。',
+   beforeRuby:'先生の<ruby>許<rt>きょ</rt></ruby>', afterRuby:'を<ruby>得<rt>え</rt></ruby>て練習を休む。', kanji:'可', reading:'許可（きょか）'},
+  {num:7, script:'kata', before:'洗たく<ruby>機<rt>き</rt></ruby>には', target:'エキタイ', after:'の<ruby>洗剤<rt>せんざい</rt></ruby>を使う。',
+   beforeRuby:'洗たく<ruby>機<rt>き</rt></ruby>には', afterRuby:'の<ruby>洗剤<rt>せんざい</rt></ruby>を使う。', kanji:'液体', reading:'液体（えきたい）'},
+  {num:8, script:'hira', before:'作文に', target:'かり', after:'の題名をつけて書き始める。',
+   beforeRuby:'作文に', afterRuby:'の題名をつけて書き始める。', kanji:'仮', reading:'仮（かり）'},
+  {num:9, script:'kata', before:'', target:'ムエキ', after:'な<ruby>抵抗<rt>ていこう</rt></ruby>をやめて<ruby>降参<rt>こうさん</rt></ruby>する。',
+   beforeRuby:'', afterRuby:'な<ruby>抵抗<rt>ていこう</rt></ruby>をやめて<ruby>降参<rt>こうさん</rt></ruby>する。', kanji:'無益', reading:'無益（むえき）'},
+  {num:10, script:'kata', before:'車の', target:'オウライ', after:'が<ruby>激<rt>はげ</rt></ruby>しい<ruby>幹線<rt>かんせん</rt></ruby>道路。',
+   beforeRuby:'車の', afterRuby:'が<ruby>激<rt>はげ</rt></ruby>しい<ruby>幹線<rt>かんせん</rt></ruby>道路。', kanji:'往来', reading:'往来（おうらい）'},
+  {num:11, script:'kata', before:'店じまいのため、商品を', target:'テイカ', after:'の<ruby>半額<rt>はんがく</rt></ruby>で売る。',
+   beforeRuby:'店じまいのため、商品を', afterRuby:'の<ruby>半額<rt>はんがく</rt></ruby>で売る。', kanji:'定価', reading:'定価（ていか）'},
+  {num:12, script:'kata', before:'', target:'カメン', after:'を<ruby>脱<rt>ぬ</rt></ruby>いで正体をあらわす。',
+   beforeRuby:'', afterRuby:'を<ruby>脱<rt>ぬ</rt></ruby>いで正体をあらわす。', kanji:'仮面', reading:'仮面（かめん）'},
+  {num:13, script:'kata', before:'後から<ruby>設定<rt>せってい</rt></ruby>を<ruby>変更<rt>へんこう</rt></ruby>することが', target:'カ', after:'<ruby>能<rt>のう</rt></ruby>である。',
+   beforeRuby:'後から<ruby>設定<rt>せってい</rt></ruby>を<ruby>変更<rt>へんこう</rt></ruby>することが', afterRuby:'<ruby>能<rt>のう</rt></ruby>である。', kanji:'可', reading:'可能（かのう）'},
+  {num:14, script:'kata', before:'<ruby>冷却剤<rt>れいきゃくざい</rt></ruby>として', target:'エキカ', after:'した<ruby>窒素<rt>ちっそ</rt></ruby>を用いる。',
+   beforeRuby:'<ruby>冷却剤<rt>れいきゃくざい</rt></ruby>として', afterRuby:'した<ruby>窒素<rt>ちっそ</rt></ruby>を用いる。', kanji:'液化', reading:'液化（えきか）'},
+  {num:15, script:'kata', before:'家から学校まで', target:'オウ', after:'<ruby>復<rt>ふく</rt></ruby>一時間かかる。',
+   beforeRuby:'家から学校まで', afterRuby:'<ruby>復<rt>ふく</rt></ruby>一時間かかる。', kanji:'往', reading:'往復（おうふく）'},
+  {num:16, script:'hira', before:'ライトアップされた', target:'よざくら', after:'を見物する。',
+   beforeRuby:'ライトアップされた', afterRuby:'を見物する。', kanji:'夜桜', reading:'夜桜（よざくら）'},
+  {num:17, script:'kata', before:'<ruby>消毒<rt>しょうどく</rt></ruby>し、<ruby>包帯<rt>ほうたい</rt></ruby>を<ruby>巻<rt>ま</rt></ruby>いてけがの', target:'オウキュウ', after:'<ruby>処置<rt>しょち</rt></ruby>をする。',
+   beforeRuby:'<ruby>消毒<rt>しょうどく</rt></ruby>し、<ruby>包帯<rt>ほうたい</rt></ruby>を<ruby>巻<rt>ま</rt></ruby>いてけがの', afterRuby:'<ruby>処置<rt>しょち</rt></ruby>をする。', kanji:'応急', reading:'応急（おうきゅう）'},
+  {num:18, script:'kata', before:'<ruby>隅田川<rt>すみだがわ</rt></ruby>の', target:'カコウ', after:'<ruby>付近<rt>ふきん</rt></ruby>の<ruby>三角州<rt>さんかくす</rt></ruby>を<ruby>埋<rt>う</rt></ruby>め<ruby>立<rt>た</rt></ruby>てる。',
+   beforeRuby:'<ruby>隅田川<rt>すみだがわ</rt></ruby>の', afterRuby:'<ruby>付近<rt>ふきん</rt></ruby>の<ruby>三角州<rt>さんかくす</rt></ruby>を<ruby>埋<rt>う</rt></ruby>め<ruby>立<rt>た</rt></ruby>てる。', kanji:'河口', reading:'河口（かこう）'},
+  {num:19, script:'kata', before:'コーチから', target:'ユウエキ', after:'な助言をもらった。',
+   beforeRuby:'コーチから', afterRuby:'な助言をもらった。', kanji:'有益', reading:'有益（ゆうえき）'},
+  {num:20, script:'kata', before:'ニューヨークで日本の<ruby>交響楽団<rt>こうきょうがくだん</rt></ruby>が', target:'コウエン', after:'を行う。',
+   beforeRuby:'ニューヨークで日本の<ruby>交響楽団<rt>こうきょうがくだん</rt></ruby>が', afterRuby:'を行う。', kanji:'公演', reading:'公演（こうえん）'}
 ];
 
 let current = 0;
