@@ -2,8 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>確認問題 第7回 (21-40)</title>
+<title>漢字テスト (1-20)</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -208,70 +207,37 @@
 </head>
 <body>
 
-<h1>確認問題 第7回（21〜40）</h1>
+<h1>漢字テスト（1〜20）</h1>
 <div class="progress" id="progress"></div>
 
 <div id="app"></div>
 
 <script>
-const R = (k, y) => `<ruby>${k}<rt>${y}</rt></ruby>`;
+const rb = (k, y) => `<ruby>${k}<rt>${y}</rt></ruby>`;
+const mk = (num, script, before, target, after, kanji, reading) =>
+  ({ num, script, before, target, after, beforeRuby: before, afterRuby: after, kanji, reading });
+
 const questions = [
-  { num: 21, script: 'katakana', before: '大雪で車が立ち', target: 'オウジョウ', after: 'する。',
-    beforeRuby: '大雪で車が立ち', afterRuby: 'する。', kanji: '往生', reading: 'おうじょう' },
-  { num: 22, script: 'hiragana',
-    before: '百円の商品に、三割の' + R('利益','りえき') + 'を' + R('見込','みこ') + 'んで', target: 'あたい', after: 'を付ける。',
-    beforeRuby: '百円の商品に、三割の' + R('利益','りえき') + 'を' + R('見込','みこ') + 'んで', afterRuby: 'を付ける。', kanji: '値', reading: 'あたい' },
-  { num: 23, script: 'katakana', before: '先週から', target: 'ジョウエン', after: '中のミュージカルを見に行く。',
-    beforeRuby: '先週から', afterRuby: '中のミュージカルを見に行く。', kanji: '上演', reading: 'じょうえん' },
-  { num: 24, script: 'katakana', before: 'けが人の耳もとで呼びかけても', target: 'ハンノウ', after: 'がない。',
-    beforeRuby: 'けが人の耳もとで呼びかけても', afterRuby: 'がない。', kanji: '反応', reading: 'はんのう' },
-  { num: 25, script: 'hiragana',
-    before: '漢字の名前に' + R('片','かた'), target: 'かな', after: 'で読み方を' + R('振','ふ') + 'る。',
-    beforeRuby: '漢字の名前に' + R('片','かた'), afterRuby: 'で読み方を' + R('振','ふ') + 'る。', kanji: '仮名', reading: 'かな（片仮名）' },
-  { num: 26, script: 'katakana',
-    before: 'アイガモは' + R('稲','いね') + 'の' + R('害虫','がいちゅう') + 'を食べてくれる', target: 'エキチョウ', after: 'だ。',
-    beforeRuby: 'アイガモは' + R('稲','いね') + 'の' + R('害虫','がいちゅう') + 'を食べてくれる', afterRuby: 'だ。', kanji: '益鳥', reading: 'えきちょう' },
-  { num: 27, script: 'hiragana',
-    before: '春の海岸で、ピンクいろをした', target: 'さくらがい', after: 'を拾う。',
-    beforeRuby: '春の海岸で、ピンクいろをした', afterRuby: 'を拾う。', kanji: '桜貝', reading: 'さくらがい' },
-  { num: 28, script: 'katakana',
-    before: R('満場','まんじょう') + R('一致','いっち') + 'で' + R('議案','ぎあん') + 'を', target: 'カケツ', after: 'する。',
-    beforeRuby: R('満場','まんじょう') + R('一致','いっち') + 'で' + R('議案','ぎあん') + 'を', afterRuby: 'する。', kanji: '可決', reading: 'かけつ' },
-  { num: 29, script: 'katakana',
-    before: R('私','わたし') + 'の', target: 'ケツエキ', after: R('型','がた') + 'はA型です。',
-    beforeRuby: R('私','わたし') + 'の', afterRuby: R('型','がた') + 'はA型です。', kanji: '血液', reading: 'けつえき' },
-  { num: 30, script: 'hiragana', before: '', target: 'かわら', after: 'でバーベキューをする。',
-    beforeRuby: '', afterRuby: 'でバーベキューをする。', kanji: '河原', reading: 'かわら' },
-  { num: 31, script: 'katakana',
-    before: 'ベーブルースは', target: 'オウネン', after: 'の名野球' + R('選手','せんしゅ') + 'である。',
-    beforeRuby: 'ベーブルースは', afterRuby: 'の名野球' + R('選手','せんしゅ') + 'である。', kanji: '往年', reading: 'おうねん' },
-  { num: 32, script: 'hiragana',
-    before: R('監督','かんとく') + 'の' + R('激励','げきれい') + 'に', target: 'こたえる', after: '。',
-    beforeRuby: R('監督','かんとく') + 'の' + R('激励','げきれい') + 'に', afterRuby: '。', kanji: '応える', reading: 'こたえる' },
-  { num: 33, script: 'katakana',
-    before: 'IT事業に' + R('成功','せいこう') + 'して、' + R('莫大','ばくだい') + 'な', target: 'リエキ', after: 'をあげる。',
-    beforeRuby: 'IT事業に' + R('成功','せいこう') + 'して、' + R('莫大','ばくだい') + 'な', afterRuby: 'をあげる。', kanji: '利益', reading: 'りえき' },
-  { num: 34, script: 'katakana',
-    before: '', target: 'コウカ', after: 'な' + R('宝石','ほうせき') + 'を身につけて、パーティーに' + R('参加','さんか') + 'する。',
-    beforeRuby: '', afterRuby: 'な' + R('宝石','ほうせき') + 'を身につけて、パーティーに' + R('参加','さんか') + 'する。', kanji: '高価', reading: 'こうか' },
-  { num: 35, script: 'katakana',
-    before: '返品', target: 'フカ', after: 'の商品なので、' + R('慎重','しんちょう') + 'に' + R('選','えら') + 'ぼう。',
-    beforeRuby: '返品', afterRuby: 'の商品なので、' + R('慎重','しんちょう') + 'に' + R('選','えら') + 'ぼう。', kanji: '不可', reading: 'ふか' },
-  { num: 36, script: 'katakana',
-    before: '計画通りに実行' + R('可能','かのう') + 'かどうか、運動会の予行', target: 'エンシュウ', after: 'を行う。',
-    beforeRuby: '計画通りに実行' + R('可能','かのう') + 'かどうか、運動会の予行', afterRuby: 'を行う。', kanji: '演習', reading: 'えんしゅう' },
-  { num: 37, script: 'katakana',
-    before: R('課題解決','かだいかいけつ') + 'のために、', target: 'カセツ', after: 'を立てて' + R('実験','じっけん') + 'する。',
-    beforeRuby: R('課題解決','かだいかいけつ') + 'のために、', afterRuby: 'を立てて' + R('実験','じっけん') + 'する。', kanji: '仮説', reading: 'かせつ' },
-  { num: 38, script: 'katakana',
-    before: '国' + R('破','やぶ') + 'れて', target: 'サンガ', after: 'ありというが、' + R('敗戦','はいせん') + 'の' + R('翌','よく') + R('春','しゅん') + 'も美しい花々が人々の目をなぐさめた。',
-    beforeRuby: '国' + R('破','やぶ') + 'れて', afterRuby: 'ありというが、' + R('敗戦','はいせん') + 'の' + R('翌','よく') + R('春','しゅん') + 'も美しい花々が人々の目をなぐさめた。', kanji: '山河', reading: 'さんが' },
-  { num: 39, script: 'katakana',
-    before: R('胃','い'), target: 'エキ', after: 'の中にふくまれている' + R('酸','さん') + '。',
-    beforeRuby: R('胃','い'), afterRuby: 'の中にふくまれている' + R('酸','さん') + '。', kanji: '液', reading: 'えき（胃液）' },
-  { num: 40, script: 'katakana',
-    before: '春の' + R('到来','とうらい') + 'を知らせる', target: 'さくらゼンセン', after: 'が日に日に北上する。',
-    beforeRuby: '春の' + R('到来','とうらい') + 'を知らせる', afterRuby: 'が日に日に北上する。', kanji: '桜前線', reading: 'さくらぜんせん' }
+  mk(1, 'katakana', '他人の' + rb('存在','そんざい') + 'など、全く', 'ガンチュウ', 'にない。', '眼中', 'がんちゅう'),
+  mk(2, 'katakana', '', 'カンブ', 'の' + rb('勢力','せいりょく') + rb('争','あらそ') + 'いで' + rb('政党','せいとう') + 'が' + rb('分裂','ぶんれつ') + 'する。', '幹部', 'かんぶ'),
+  mk(3, 'katakana', rb('雑誌','ざっし') + 'の', 'シンカン', 'が書店の店頭に' + rb('並','なら') + 'ぶ。', '新刊', 'しんかん'),
+  mk(4, 'katakana', 'たき火による', 'カシツ', 'が' + rb('原因','げんいん') + 'で山火事になった。', '過失', 'かしつ'),
+  mk(5, 'katakana', '', 'カンヨウ', rb('句','く') + 'やことわざをたくさん' + rb('覚','おぼ') + 'える。', '慣用', 'かんよう'),
+  mk(6, 'katakana', '時代に合わなくなった', 'カンコウ', 'を' + rb('是正','ぜせい') + 'する。', '慣行', 'かんこう'),
+  mk(7, 'katakana', '東京と' + rb('大阪','おおさか') + 'を' + rb('結','むす') + 'ぶ新しい', 'カンセン', '道路を' + rb('建設','けんせつ') + 'する。', '幹線', 'かんせん'),
+  mk(8, 'katakana', '一年生のときに' + rb('比','くら') + 'べると、町田くんは', 'カクジツ', 'に' + rb('成長','せいちょう') + 'している。', '確実', 'かくじつ'),
+  mk(9, 'katakana', '子ども会の集まりは十二時に', 'カイサン', 'した。', '解散', 'かいさん'),
+  mk(10, 'katakana', rb('将来','しょうらい') + 'を見とおす', 'ガンリキ', '。', '眼力', 'がんりき'),
+  mk(11, 'katakana', '', 'ケイカイ', 'な足取りで歩いて行く。', '軽快', 'けいかい'),
+  mk(12, 'katakana', rb('彼','かれ') + 'の言葉を', 'ガクメン', 'どおりに受け取ってはいけない。', '額面', 'がくめん'),
+  mk(13, 'katakana', '山田' + rb('選手','せんしゅ') + 'は', 'ジンカク', '者として知られている。', '人格', 'じんかく'),
+  mk(14, 'katakana', rb('健康','けんこう') + 'を' + rb('維持','いじ') + 'するため、生活', 'シュウカン', 'を見直す。', '習慣', 'しゅうかん'),
+  mk(15, 'katakana', '小学生向けの', 'ゲッカン', rb('雑誌','ざっし') + 'を定期' + rb('購読','こうどく') + 'する。', '月刊', 'げっかん'),
+  mk(16, 'katakana', rb('参議院','さんぎいん') + rb('選挙','せんきょ') + 'の' + rb('投票','とうひょう') + rb('結果','けっか') + 'が', 'カクテイ', 'する。', '確定', 'かくてい'),
+  mk(17, 'katakana', rb('政府','せいふ') + 'が', 'カンコウ', 'する' + rb('書籍','しょせき') + 'を' + rb('取','と') + 'り' + rb('扱','あつか') + 'っている本屋。', '刊行', 'かんこう'),
+  mk(18, 'katakana', 'この' + rb('辺','あた') + 'りの地理には', 'フなれ', 'なので、' + rb('道案内','みちあんない') + 'を' + rb('頼','たの') + 'む。', '不慣れ', 'ふなれ'),
+  mk(19, 'katakana', '問題がすべて', 'カイケツ', 'したので明るい顔をしている。', '解決', 'かいけつ'),
+  mk(20, 'katakana', rb('市谷','いちがや') + 'さんの' + rb('説明','せつめい') + 'は', 'メイカイ', 'でわかりやすかった。', '明快', 'めいかい')
 ];
 
 let current = 0;
