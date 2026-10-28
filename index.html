@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>漢字テスト (1-20)</title>
+<title>確認問題 第8回 (21-40)</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -207,37 +207,33 @@
 </head>
 <body>
 
-<h1>漢字テスト（1〜20）</h1>
+<h1>確認問題 第8回（21〜40）</h1>
 <div class="progress" id="progress"></div>
 
 <div id="app"></div>
 
 <script>
-const rb = (k, y) => `<ruby>${k}<rt>${y}</rt></ruby>`;
-const mk = (num, script, before, target, after, kanji, reading) =>
-  ({ num, script, before, target, after, beforeRuby: before, afterRuby: after, kanji, reading });
-
 const questions = [
-  mk(1, 'katakana', '他人の' + rb('存在','そんざい') + 'など、全く', 'ガンチュウ', 'にない。', '眼中', 'がんちゅう'),
-  mk(2, 'katakana', '', 'カンブ', 'の' + rb('勢力','せいりょく') + rb('争','あらそ') + 'いで' + rb('政党','せいとう') + 'が' + rb('分裂','ぶんれつ') + 'する。', '幹部', 'かんぶ'),
-  mk(3, 'katakana', rb('雑誌','ざっし') + 'の', 'シンカン', 'が書店の店頭に' + rb('並','なら') + 'ぶ。', '新刊', 'しんかん'),
-  mk(4, 'katakana', 'たき火による', 'カシツ', 'が' + rb('原因','げんいん') + 'で山火事になった。', '過失', 'かしつ'),
-  mk(5, 'katakana', '', 'カンヨウ', rb('句','く') + 'やことわざをたくさん' + rb('覚','おぼ') + 'える。', '慣用', 'かんよう'),
-  mk(6, 'katakana', '時代に合わなくなった', 'カンコウ', 'を' + rb('是正','ぜせい') + 'する。', '慣行', 'かんこう'),
-  mk(7, 'katakana', '東京と' + rb('大阪','おおさか') + 'を' + rb('結','むす') + 'ぶ新しい', 'カンセン', '道路を' + rb('建設','けんせつ') + 'する。', '幹線', 'かんせん'),
-  mk(8, 'katakana', '一年生のときに' + rb('比','くら') + 'べると、町田くんは', 'カクジツ', 'に' + rb('成長','せいちょう') + 'している。', '確実', 'かくじつ'),
-  mk(9, 'katakana', '子ども会の集まりは十二時に', 'カイサン', 'した。', '解散', 'かいさん'),
-  mk(10, 'katakana', rb('将来','しょうらい') + 'を見とおす', 'ガンリキ', '。', '眼力', 'がんりき'),
-  mk(11, 'katakana', '', 'ケイカイ', 'な足取りで歩いて行く。', '軽快', 'けいかい'),
-  mk(12, 'katakana', rb('彼','かれ') + 'の言葉を', 'ガクメン', 'どおりに受け取ってはいけない。', '額面', 'がくめん'),
-  mk(13, 'katakana', '山田' + rb('選手','せんしゅ') + 'は', 'ジンカク', '者として知られている。', '人格', 'じんかく'),
-  mk(14, 'katakana', rb('健康','けんこう') + 'を' + rb('維持','いじ') + 'するため、生活', 'シュウカン', 'を見直す。', '習慣', 'しゅうかん'),
-  mk(15, 'katakana', '小学生向けの', 'ゲッカン', rb('雑誌','ざっし') + 'を定期' + rb('購読','こうどく') + 'する。', '月刊', 'げっかん'),
-  mk(16, 'katakana', rb('参議院','さんぎいん') + rb('選挙','せんきょ') + 'の' + rb('投票','とうひょう') + rb('結果','けっか') + 'が', 'カクテイ', 'する。', '確定', 'かくてい'),
-  mk(17, 'katakana', rb('政府','せいふ') + 'が', 'カンコウ', 'する' + rb('書籍','しょせき') + 'を' + rb('取','と') + 'り' + rb('扱','あつか') + 'っている本屋。', '刊行', 'かんこう'),
-  mk(18, 'katakana', 'この' + rb('辺','あた') + 'りの地理には', 'フなれ', 'なので、' + rb('道案内','みちあんない') + 'を' + rb('頼','たの') + 'む。', '不慣れ', 'ふなれ'),
-  mk(19, 'katakana', '問題がすべて', 'カイケツ', 'したので明るい顔をしている。', '解決', 'かいけつ'),
-  mk(20, 'katakana', rb('市谷','いちがや') + 'さんの' + rb('説明','せつめい') + 'は', 'メイカイ', 'でわかりやすかった。', '明快', 'めいかい')
+  {num:21, before:'絵を', target:'ガク', after:'に入れて<ruby>飾<rt>かざ</rt></ruby>る。', beforeRuby:'絵を', afterRuby:'に入れて<ruby>飾<rt>かざ</rt></ruby>る。', kanji:'額', reading:'ガク（音読み）'},
+  {num:22, before:'彼が<ruby>犯人<rt>はんにん</rt></ruby>だという', target:'カッコ', after:'たる<ruby>証拠<rt>しょうこ</rt></ruby>がある。', beforeRuby:'彼が<ruby>犯人<rt>はんにん</rt></ruby>だという', afterRuby:'たる<ruby>証拠<rt>しょうこ</rt></ruby>がある。', kanji:'確固', reading:'カッコ（音読み）'},
+  {num:23, before:'', target:'カイゲン', after:'<ruby>供養<rt>くよう</rt></ruby>とは、<ruby>仏像<rt>ぶつぞう</rt></ruby>や<ruby>仏画<rt>ぶつが</rt></ruby>に<ruby>魂<rt>たましい</rt></ruby>を入れる<ruby>儀式<rt>ぎしき</rt></ruby>のことである。', beforeRuby:'', afterRuby:'<ruby>供養<rt>くよう</rt></ruby>とは、<ruby>仏像<rt>ぶつぞう</rt></ruby>や<ruby>仏画<rt>ぶつが</rt></ruby>に<ruby>魂<rt>たましい</rt></ruby>を入れる<ruby>儀式<rt>ぎしき</rt></ruby>のことである。', kanji:'開眼', reading:'カイゲン（音読み）'},
+  {num:24, before:'<ruby>初詣<rt>はつもうで</rt></ruby>に行き、<ruby>息子<rt>むすこ</rt></ruby>の', target:'ゴウカク', after:'を<ruby>祈<rt>いの</rt></ruby>る。', beforeRuby:'<ruby>初詣<rt>はつもうで</rt></ruby>に行き、<ruby>息子<rt>むすこ</rt></ruby>の', afterRuby:'を<ruby>祈<rt>いの</rt></ruby>る。', kanji:'合格', reading:'ゴウカク（音読み）'},
+  {num:25, before:'', target:'ゲネツ', after:'<ruby>剤<rt>ざい</rt></ruby>が<ruby>効<rt>き</rt></ruby>いて、ねつが下がる。', beforeRuby:'', afterRuby:'<ruby>剤<rt>ざい</rt></ruby>が<ruby>効<rt>き</rt></ruby>いて、ねつが下がる。', kanji:'解熱', reading:'ゲネツ（音読み）'},
+  {num:26, before:'落とした<ruby>財布<rt>さいふ</rt></ruby>を<ruby>血<rt>ち</rt></ruby>', target:'まなこ', after:'になってさがす。', beforeRuby:'落とした<ruby>財布<rt>さいふ</rt></ruby>を<ruby>血<rt>ち</rt></ruby>', afterRuby:'になってさがす。', kanji:'眼', reading:'まなこ（訓読み）'},
+  {num:27, before:'自らの', target:'あやまち', after:'を<ruby>認<rt>みと</rt></ruby>めて<ruby>謝罪<rt>しゃざい</rt></ruby>する。', beforeRuby:'自らの', afterRuby:'を<ruby>認<rt>みと</rt></ruby>めて<ruby>謝罪<rt>しゃざい</rt></ruby>する。', kanji:'過ち', reading:'あやまち（訓読み）'},
+  {num:28, before:'子どもの<ruby>入場料<rt>にゅうじょうりょう</rt></ruby>は、大人の', target:'ハンガク', after:'だ。', beforeRuby:'子どもの<ruby>入場料<rt>にゅうじょうりょう</rt></ruby>は、大人の', afterRuby:'だ。', kanji:'半額', reading:'ハンガク（音読み）'},
+  {num:29, before:'太い木の', target:'みき', after:'をくりぬいて、カヌーをつくる。', beforeRuby:'太い木の', afterRuby:'をくりぬいて、カヌーをつくる。', kanji:'幹', reading:'みき（訓読み）'},
+  {num:30, before:'', target:'ひたい', after:'を<ruby>器具<rt>きぐ</rt></ruby>に近づけて<ruby>検温<rt>けんおん</rt></ruby>する。', beforeRuby:'', afterRuby:'を<ruby>器具<rt>きぐ</rt></ruby>に近づけて<ruby>検温<rt>けんおん</rt></ruby>する。', kanji:'額', reading:'ひたい（訓読み）'},
+  {num:31, before:'', target:'ひんぱん', after:'に<ruby>腕時計<rt>うでどけい</rt></ruby>を見て<ruby>時刻<rt>じこく</rt></ruby>をたしかめる。', beforeRuby:'', afterRuby:'に<ruby>腕時計<rt>うでどけい</rt></ruby>を見て<ruby>時刻<rt>じこく</rt></ruby>をたしかめる。', kanji:'頻繁', reading:'ひんぱん（音読み）'},
+  {num:32, before:'<ruby>私<rt>わたし</rt></ruby>は母と<ruby>性<rt>せい</rt></ruby>', target:'カク', after:'が<ruby>似<rt>に</rt></ruby>ていて、のんびり屋だ。', beforeRuby:'<ruby>私<rt>わたし</rt></ruby>は母と<ruby>性<rt>せい</rt></ruby>', afterRuby:'が<ruby>似<rt>に</rt></ruby>ていて、のんびり屋だ。', kanji:'格', reading:'カク（音読み）'},
+  {num:33, before:'<ruby>手術<rt>しゅじゅつ</rt></ruby>後、<ruby>彼女<rt>かのじょ</rt></ruby>は目に見えて', target:'カイホウ', after:'へ向かった。', beforeRuby:'<ruby>手術<rt>しゅじゅつ</rt></ruby>後、<ruby>彼女<rt>かのじょ</rt></ruby>は目に見えて', afterRuby:'へ向かった。', kanji:'快方', reading:'カイホウ（音読み）'},
+  {num:34, before:'GW中は、家の中でのんびりと', target:'すごす', after:'。', beforeRuby:'GW中は、家の中でのんびりと', afterRuby:'。', kanji:'過ごす', reading:'すごす（訓読み）'},
+  {num:35, before:'<ruby>彼<rt>かれ</rt></ruby>が<ruby>事件<rt>じけん</rt></ruby>のなぞをとく', target:'かぎ', after:'を<ruby>握<rt>にぎ</rt></ruby>っている。', beforeRuby:'<ruby>彼<rt>かれ</rt></ruby>が<ruby>事件<rt>じけん</rt></ruby>のなぞをとく', afterRuby:'を<ruby>握<rt>にぎ</rt></ruby>っている。', kanji:'鍵', reading:'かぎ（訓読み）'},
+  {num:36, before:'春になると、小鳥の', target:'こころよい', after:'さえずりが聞こえる。', beforeRuby:'春になると、小鳥の', afterRuby:'さえずりが聞こえる。', kanji:'快い', reading:'こころよい（訓読み）'},
+  {num:37, before:'父親が<ruby>配達<rt>はいたつ</rt></ruby>されたばかりの', target:'チョウカン', after:'を読んでいる。', beforeRuby:'父親が<ruby>配達<rt>はいたつ</rt></ruby>されたばかりの', afterRuby:'を読んでいる。', kanji:'朝刊', reading:'チョウカン（音読み）'},
+  {num:38, before:'', target:'カコ', after:'と<ruby>未来<rt>みらい</rt></ruby>を行き来するタイムマシーン。', beforeRuby:'', afterRuby:'と<ruby>未来<rt>みらい</rt></ruby>を行き来するタイムマシーン。', kanji:'過去', reading:'カコ（音読み）'},
+  {num:39, before:'スポーツマンの兄は、がっちりとした', target:'タイカク', after:'だ。', beforeRuby:'スポーツマンの兄は、がっちりとした', afterRuby:'だ。', kanji:'体格', reading:'タイカク（音読み）'},
+  {num:40, before:'<ruby>送別会<rt>そうべつかい</rt></ruby>の', target:'カンジ', after:'を<ruby>任<rt>まか</rt></ruby>されたので、計画を立てる。', beforeRuby:'<ruby>送別会<rt>そうべつかい</rt></ruby>の', afterRuby:'を<ruby>任<rt>まか</rt></ruby>されたので、計画を立てる。', kanji:'幹事', reading:'カンジ（音読み）'}
 ];
 
 let current = 0;
