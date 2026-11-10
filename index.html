@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>漢字フラッシュカード（1〜20）</title>
+<title>確認問題 第9回 (21-40)</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -207,33 +207,33 @@
 </head>
 <body>
 
-<h1>漢字フラッシュカード（1〜20）</h1>
+<h1>確認問題 第9回（21〜40）</h1>
 <div class="progress" id="progress"></div>
 
 <div id="app"></div>
 
 <script>
 const questions = [
-  {"num": 1, "script": "katakana", "before": "レギュラーになれたがケガもした", "target": "ヒキ", "after": "こもごもの一年だった。", "beforeRuby": "レギュラーになれたがケガもした", "afterRuby": "こもごもの一年だった。", "kanji": "悲喜", "reading": "ヒキ"},
-  {"num": 2, "script": "katakana", "before": "あなたの親切は", "target": "エイキュウ", "after": "に<ruby>忘<rt>わす</rt></ruby>れないでしょう。", "beforeRuby": "あなたの親切は", "afterRuby": "に<ruby>忘<rt>わす</rt></ruby>れないでしょう。", "kanji": "永久", "reading": "エイキュウ"},
-  {"num": 3, "script": "katakana", "before": "学校<ruby>周辺<rt>しゅうへん</rt></ruby>の道路は、<ruby>時間帯<rt>じかんたい</rt></ruby>により車の通行が", "target": "キ", "after": "<ruby>制<rt>せい</rt></ruby>される。", "beforeRuby": "学校<ruby>周辺<rt>しゅうへん</rt></ruby>の道路は、<ruby>時間帯<rt>じかんたい</rt></ruby>により車の通行が", "afterRuby": "<ruby>制<rt>せい</rt></ruby>される。", "kanji": "規", "reading": "キ"},
-  {"num": 4, "script": "katakana", "before": "アイスホッケーはカナダの", "target": "コクギ", "after": "だ。", "beforeRuby": "アイスホッケーはカナダの", "afterRuby": "だ。", "kanji": "国技", "reading": "コクギ"},
-  {"num": 5, "script": "katakana", "before": "十八", "target": "セイキ", "after": "にイギリスで<ruby>産業革命<rt>さんぎょうかくめい</rt></ruby>が起こった。", "beforeRuby": "十八", "afterRuby": "にイギリスで<ruby>産業革命<rt>さんぎょうかくめい</rt></ruby>が起こった。", "kanji": "世紀", "reading": "セイキ"},
-  {"num": 6, "script": "katakana", "before": "毎週のテストの<ruby>成績<rt>せいせき</rt></ruby>に", "target": "イッキ", "after": "<ruby>一憂<rt>いちゆう</rt></ruby>する。", "beforeRuby": "毎週のテストの<ruby>成績<rt>せいせき</rt></ruby>に", "afterRuby": "<ruby>一憂<rt>いちゆう</rt></ruby>する。", "kanji": "一喜", "reading": "イッキ"},
-  {"num": 7, "script": "katakana", "before": "<ruby>沖縄県<rt>おきなわけん</rt></ruby>には、アメリカの<ruby>軍事<rt>ぐんじ</rt></ruby>", "target": "キチ", "after": "がある。", "beforeRuby": "<ruby>沖縄県<rt>おきなわけん</rt></ruby>には、アメリカの<ruby>軍事<rt>ぐんじ</rt></ruby>", "afterRuby": "がある。", "kanji": "基地", "reading": "キチ"},
-  {"num": 8, "script": "hiragana", "before": "転校する友人に、クラス全員で", "target": "よせがき", "after": "を<ruby>贈<rt>おく</rt></ruby>った。", "beforeRuby": "転校する友人に、クラス全員で", "afterRuby": "を<ruby>贈<rt>おく</rt></ruby>った。", "kanji": "寄せ書き", "reading": "よせがき"},
-  {"num": 9, "script": "katakana", "before": "かつての<ruby>最新機器<rt>さいしんきき</rt></ruby>も今となっては", "target": "キュウシキ", "after": "だ。", "beforeRuby": "かつての<ruby>最新機器<rt>さいしんきき</rt></ruby>も今となっては", "afterRuby": "だ。", "kanji": "旧式", "reading": "キュウシキ"},
-  {"num": 10, "script": "katakana", "before": "お年玉でもらったお金を、アフリカの<ruby>難民支援団体<rt>なんみんしえんだんたい</rt></ruby>に", "target": "キフ", "after": "する。", "beforeRuby": "お年玉でもらったお金を、アフリカの<ruby>難民支援団体<rt>なんみんしえんだんたい</rt></ruby>に", "afterRuby": "する。", "kanji": "寄付", "reading": "キフ"},
-  {"num": 11, "script": "hiragana", "before": "<ruby>孫<rt>まご</rt></ruby>の中学<ruby>合格<rt>ごうかく</rt></ruby>を", "target": "よろこ", "after": "ぶ。", "beforeRuby": "<ruby>孫<rt>まご</rt></ruby>の中学<ruby>合格<rt>ごうかく</rt></ruby>を", "afterRuby": "ぶ。", "kanji": "喜", "reading": "よろこ"},
-  {"num": 12, "script": "katakana", "before": "血のつながりのない男親を", "target": "ギフ", "after": "という。", "beforeRuby": "血のつながりのない男親を", "afterRuby": "という。", "kanji": "義父", "reading": "ギフ"},
-  {"num": 13, "script": "katakana", "before": "", "target": "ハンギャク", "after": "者たちが<ruby>武器<rt>ぶき</rt></ruby>を<ruby>捨<rt>す</rt></ruby>てて<ruby>降伏<rt>こうふく</rt></ruby>する。", "beforeRuby": "", "afterRuby": "者たちが<ruby>武器<rt>ぶき</rt></ruby>を<ruby>捨<rt>す</rt></ruby>てて<ruby>降伏<rt>こうふく</rt></ruby>する。", "kanji": "反逆", "reading": "ハンギャク"},
-  {"num": 14, "script": "katakana", "before": "", "target": "フウキ", "after": "委員が、<ruby>服装<rt>ふくそう</rt></ruby>の<ruby>乱<rt>みだ</rt></ruby>れを注意する。", "beforeRuby": "", "afterRuby": "委員が、<ruby>服装<rt>ふくそう</rt></ruby>の<ruby>乱<rt>みだ</rt></ruby>れを注意する。", "kanji": "風紀", "reading": "フウキ"},
-  {"num": 15, "script": "katakana", "before": "<ruby>同窓会<rt>どうそうかい</rt></ruby>で", "target": "キュウチ", "after": "の友人たちと交友を深める。", "beforeRuby": "<ruby>同窓会<rt>どうそうかい</rt></ruby>で", "afterRuby": "の友人たちと交友を深める。", "kanji": "旧知", "reading": "キュウチ"},
-  {"num": 16, "script": "katakana", "before": "リトグラフという<ruby>版画<rt>はんが</rt></ruby>の", "target": "ギホウ", "after": "を学ぶ。", "beforeRuby": "リトグラフという<ruby>版画<rt>はんが</rt></ruby>の", "afterRuby": "を学ぶ。", "kanji": "技法", "reading": "ギホウ"},
-  {"num": 17, "script": "hiragana", "before": "", "target": "さかだち", "after": "をして十メートル歩けるようになった。", "beforeRuby": "", "afterRuby": "をして十メートル歩けるようになった。", "kanji": "逆立ち", "reading": "さかだち"},
-  {"num": 18, "script": "katakana", "before": "", "target": "キゲン", "after": "前の人々の<ruby>暮<rt>く</rt></ruby>らしを<ruby>伝<rt>つた</rt></ruby>える、縄文時代の<ruby>貴重<rt>きちょう</rt></ruby>な<ruby>遺跡<rt>いせき</rt></ruby>。", "beforeRuby": "", "afterRuby": "前の人々の<ruby>暮<rt>く</rt></ruby>らしを<ruby>伝<rt>つた</rt></ruby>える、縄文時代の<ruby>貴重<rt>きちょう</rt></ruby>な<ruby>遺跡<rt>いせき</rt></ruby>。", "kanji": "紀元", "reading": "キゲン"},
-  {"num": 19, "script": "hiragana", "before": "学校帰りに本屋に", "target": "よりみち", "after": "をする。", "beforeRuby": "学校帰りに本屋に", "afterRuby": "をする。", "kanji": "寄り道", "reading": "よりみち"},
-  {"num": 20, "script": "katakana", "before": "", "target": "セイギ", "after": "を<ruby>貫<rt>つらぬ</rt></ruby>こうとする気持ちを持つことが大切だ。", "beforeRuby": "", "afterRuby": "を<ruby>貫<rt>つらぬ</rt></ruby>こうとする気持ちを持つことが大切だ。", "kanji": "正義", "reading": "セイギ"}
+  {num:21, before:'リビングにある古時計は使われなくなって', target:'ひさしい', after:'。', beforeRuby:'リビングにある古時計は使われなくなって', afterRuby:'。', kanji:'久しい', reading:'ひさしい'},
+  {num:22, before:'大学内の<ruby>若<rt>わか</rt></ruby>い研究者を<ruby>支援<rt>しえん</rt></ruby>する', target:'キキン', after:'が<ruby>設立<rt>せつりつ</rt></ruby>された。', beforeRuby:'大学内の<ruby>若<rt>わか</rt></ruby>い研究者を<ruby>支援<rt>しえん</rt></ruby>する', afterRuby:'が<ruby>設立<rt>せつりつ</rt></ruby>された。', kanji:'基金', reading:'キキン'},
+  {num:23, before:'<ruby>保護者<rt>ほごしゃ</rt></ruby>は、<ruby>子供<rt>こども</rt></ruby>に', target:'ギ', after:'<ruby>務<rt>む</rt></ruby>教育を受けさせなければならない。', beforeRuby:'<ruby>保護者<rt>ほごしゃ</rt></ruby>は、<ruby>子供<rt>こども</rt></ruby>に', afterRuby:'<ruby>務<rt>む</rt></ruby>教育を受けさせなければならない。', kanji:'義', reading:'ギ（義務）'},
+  {num:24, before:'<ruby>私<rt>わたし</rt></ruby>はソフトボールなどの', target:'キュウギ', after:'が苦手です。', beforeRuby:'<ruby>私<rt>わたし</rt></ruby>はソフトボールなどの', afterRuby:'が苦手です。', kanji:'球技', reading:'キュウギ'},
+  {num:25, before:'', target:'キシュク', after:'<ruby>舎<rt>しゃ</rt></ruby>の<ruby>設備<rt>せつび</rt></ruby>がある中学校を<ruby>受験<rt>じゅけん</rt></ruby>する。', beforeRuby:'', afterRuby:'<ruby>舎<rt>しゃ</rt></ruby>の<ruby>設備<rt>せつび</rt></ruby>がある中学校を<ruby>受験<rt>じゅけん</rt></ruby>する。', kanji:'寄宿', reading:'キシュク'},
+  {num:26, before:'先生の<ruby>指示<rt>しじ</rt></ruby>に', target:'さからう', after:'生徒はいなかった。', beforeRuby:'先生の<ruby>指示<rt>しじ</rt></ruby>に', afterRuby:'生徒はいなかった。', kanji:'逆らう', reading:'さからう'},
+  {num:27, before:'「おくのほそ道」は<ruby>松尾芭蕉<rt>まつおばしょう</rt></ruby>が東北や<ruby>北陸<rt>ほくりく</rt></ruby>を旅した', target:'キコウ', after:'文だ。', beforeRuby:'「おくのほそ道」は<ruby>松尾芭蕉<rt>まつおばしょう</rt></ruby>が東北や<ruby>北陸<rt>ほくりく</rt></ruby>を旅した', afterRuby:'文だ。', kanji:'紀行', reading:'キコウ'},
+  {num:28, before:'父親の<ruby>経験<rt>けいけん</rt></ruby>に', target:'もとづく', after:'意見を<ruby>尊重<rt>そんちょう</rt></ruby>する。', beforeRuby:'父親の<ruby>経験<rt>けいけん</rt></ruby>に', afterRuby:'意見を<ruby>尊重<rt>そんちょう</rt></ruby>する。', kanji:'基づく', reading:'もとづく'},
+  {num:29, before:'', target:'キュウライ', after:'の<ruby>常識<rt>じょうしき</rt></ruby>をくつがえす新たな<ruby>手法<rt>しゅほう</rt></ruby>を開発する。', beforeRuby:'', afterRuby:'の<ruby>常識<rt>じょうしき</rt></ruby>をくつがえす新たな<ruby>手法<rt>しゅほう</rt></ruby>を開発する。', kanji:'旧来', reading:'キュウライ'},
+  {num:30, before:'', target:'キ', after:'<ruby>則<rt>そく</rt></ruby>正しい食事をとる。', beforeRuby:'', afterRuby:'<ruby>則<rt>そく</rt></ruby>正しい食事をとる。', kanji:'規', reading:'キ（規則）'},
+  {num:31, before:'マラソン<ruby>選手<rt>せんしゅ</rt></ruby>の', target:'ジキュウ', after:'<ruby>力<rt>りょく</rt></ruby>には<ruby>驚<rt>おどろ</rt></ruby>くべきものがある。', beforeRuby:'マラソン<ruby>選手<rt>せんしゅ</rt></ruby>の', afterRuby:'<ruby>力<rt>りょく</rt></ruby>には<ruby>驚<rt>おどろ</rt></ruby>くべきものがある。', kanji:'持久', reading:'ジキュウ'},
+  {num:32, before:'たいていの', target:'ジョウギ', after:'には、ミリメートルの<ruby>目盛<rt>めも</rt></ruby>りがついている。', beforeRuby:'たいていの', afterRuby:'には、ミリメートルの<ruby>目盛<rt>めも</rt></ruby>りがついている。', kanji:'定規', reading:'ジョウギ'},
+  {num:33, before:'私の', target:'トクギ', after:'は、歌を歌いながらバイオリンを<ruby>弾<rt>ひ</rt></ruby>くことだ。', beforeRuby:'私の', afterRuby:'は、歌を歌いながらバイオリンを<ruby>弾<rt>ひ</rt></ruby>くことだ。', kanji:'特技', reading:'トクギ'},
+  {num:34, before:'学校で学ぶ', target:'イギ', after:'とは何かを考える。', beforeRuby:'学校で学ぶ', afterRuby:'とは何かを考える。', kanji:'意義', reading:'イギ'},
+  {num:35, before:'先生について、ピアノを', target:'キホン', after:'から習う。', beforeRuby:'先生について、ピアノを', afterRuby:'から習う。', kanji:'基本', reading:'キホン'},
+  {num:36, before:'4対5の<ruby>延長<rt>えんちょう</rt></ruby>十回の<ruby>裏<rt>うら</rt></ruby>に', target:'ギャクテン', after:'ホームランを<ruby>打<rt>う</rt></ruby>った。', beforeRuby:'4対5の<ruby>延長<rt>えんちょう</rt></ruby>十回の<ruby>裏<rt>うら</rt></ruby>に', afterRuby:'ホームランを<ruby>打<rt>う</rt></ruby>った。', kanji:'逆転', reading:'ギャクテン'},
+  {num:37, before:'若い人たちの<ruby>活躍<rt>かつやく</rt></ruby>で、', target:'シンキュウ', after:'の世代交代が進む。', beforeRuby:'若い人たちの<ruby>活躍<rt>かつやく</rt></ruby>で、', afterRuby:'の世代交代が進む。', kanji:'新旧', reading:'シンキュウ'},
+  {num:38, before:'よほどうれしいことがあったのか、母は', target:'キショク', after:'<ruby>満面<rt>まんめん</rt></ruby>だ。', beforeRuby:'よほどうれしいことがあったのか、母は', afterRuby:'<ruby>満面<rt>まんめん</rt></ruby>だ。', kanji:'喜色', reading:'キショク'},
+  {num:39, before:'', target:'キカク', after:'外で市場に<ruby>出荷<rt>しゅっか</rt></ruby>できない<ruby>野<rt>や</rt></ruby><ruby>菜<rt>さい</rt></ruby>を安く売る。', beforeRuby:'', afterRuby:'外で市場に<ruby>出荷<rt>しゅっか</rt></ruby>できない<ruby>野<rt>や</rt></ruby><ruby>菜<rt>さい</rt></ruby>を安く売る。', kanji:'規格', reading:'キカク'},
+  {num:40, before:'長く<ruby>伸<rt>の</rt></ruby>ばしていた<ruby>髪<rt>かみ</rt></ruby>を', target:'ひさしぶり', after:'に短く切った。', beforeRuby:'長く<ruby>伸<rt>の</rt></ruby>ばしていた<ruby>髪<rt>かみ</rt></ruby>を', afterRuby:'に短く切った。', kanji:'久しぶり', reading:'ひさしぶり'}
 ];
 
 let current = 0;
