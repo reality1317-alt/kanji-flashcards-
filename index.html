@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>総合復習問題 第10回 (21-40)</title>
+<title>総合復習問題 第10回 (41-60)</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -159,6 +159,21 @@
     font-size: 0.85rem;
     text-align: center;
   }
+  .back-btn {
+    background: #fff;
+    color: #34495e;
+    border: 2px solid #34495e;
+    padding: 6px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 12px;
+  }
+  .back-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
   .summary {
     max-width: 420px;
     width: 100%;
@@ -207,214 +222,39 @@
 </head>
 <body>
 
-<h1>総合復習問題 第10回（21〜40）</h1>
+<h1>総合復習問題 第10回（41〜60）</h1>
 <div class="progress" id="progress"></div>
 
 <div id="app"></div>
 
 <script>
+const Q = (num, before, target, after, kanji) => {
+  const hira = target.replace(/[ァ-ヶ]/g, c => String.fromCharCode(c.charCodeAt(0) - 96));
+  return { num, before, target, after, beforeRuby: before, afterRuby: after, kanji, reading: `${kanji}（${hira}）` };
+};
 const questions = [
- {
-  "num": 21,
-  "before": "",
-  "target": "やさしい",
-  "after": "問題と思って<ruby>侮<rt>あなど</rt></ruby>ってはいけない。",
-  "beforeRuby": "",
-  "afterRuby": "問題と思って<ruby>侮<rt>あなど</rt></ruby>ってはいけない。",
-  "kanji": "易しい",
-  "reading": "やさしい"
- },
- {
-  "num": 22,
-  "before": "<ruby>誰<rt>だれ</rt></ruby>もその<ruby>怪<rt>あや</rt></ruby>しげな",
-  "target": "エキタイ",
-  "after": "に手を<ruby>触<rt>ふ</rt></ruby>れようとはしなかった。",
-  "beforeRuby": "<ruby>誰<rt>だれ</rt></ruby>もその<ruby>怪<rt>あや</rt></ruby>しげな",
-  "afterRuby": "に手を<ruby>触<rt>ふ</rt></ruby>れようとはしなかった。",
-  "kanji": "液体",
-  "reading": "えきたい"
- },
- {
-  "num": 23,
-  "before": "一度",
-  "target": "シュウカン",
-  "after": "化したことを元に<ruby>戻<rt>もど</rt></ruby>すのは<ruby>難<rt>むずか</rt></ruby>しい。",
-  "beforeRuby": "一度",
-  "afterRuby": "化したことを元に<ruby>戻<rt>もど</rt></ruby>すのは<ruby>難<rt>むずか</rt></ruby>しい。",
-  "kanji": "習慣",
-  "reading": "しゅうかん"
- },
- {
-  "num": 24,
-  "before": "<ruby>亡命<rt>ぼうめい</rt></ruby>中の<ruby>元大統領<rt>もとだいとうりょう</rt></ruby>に、国家に対する",
-  "target": "ハンギャク",
-  "after": "の<ruby>罪<rt>つみ</rt></ruby>で有罪が<ruby>宣告<rt>せんこく</rt></ruby>された。",
-  "beforeRuby": "<ruby>亡命<rt>ぼうめい</rt></ruby>中の<ruby>元大統領<rt>もとだいとうりょう</rt></ruby>に、国家に対する",
-  "afterRuby": "の<ruby>罪<rt>つみ</rt></ruby>で有罪が<ruby>宣告<rt>せんこく</rt></ruby>された。",
-  "kanji": "反逆",
-  "reading": "はんぎゃく"
- },
- {
-  "num": 25,
-  "before": "<ruby>宮殿<rt>きゅうでん</rt></ruby>の門前には、いつも同じ<ruby>服装<rt>ふくそう</rt></ruby>の",
-  "target": "エイヘイ",
-  "after": "が立っている。",
-  "beforeRuby": "<ruby>宮殿<rt>きゅうでん</rt></ruby>の門前には、いつも同じ<ruby>服装<rt>ふくそう</rt></ruby>の",
-  "afterRuby": "が立っている。",
-  "kanji": "衛兵",
-  "reading": "えいへい"
- },
- {
-  "num": 26,
-  "before": "",
-  "target": "ムエキ",
-  "after": "な<ruby>反抗<rt>はんこう</rt></ruby>はもう終わりにしよう。",
-  "beforeRuby": "",
-  "afterRuby": "な<ruby>反抗<rt>はんこう</rt></ruby>はもう終わりにしよう。",
-  "kanji": "無益",
-  "reading": "むえき"
- },
- {
-  "num": 27,
-  "before": "出発する<ruby>便<rt>びん</rt></ruby>が",
-  "target": "カクテイ",
-  "after": "したら教えてください。",
-  "beforeRuby": "出発する<ruby>便<rt>びん</rt></ruby>が",
-  "afterRuby": "したら教えてください。",
-  "kanji": "確定",
-  "reading": "かくてい"
- },
- {
-  "num": 28,
-  "before": "大野くんとは<ruby>幼稚園<rt>ようちえん</rt></ruby>からの",
-  "target": "キュウチ",
-  "after": "の<ruby>仲<rt>なか</rt></ruby>で、<ruby>彼<rt>かれ</rt></ruby>のことなら何でも知っている。",
-  "beforeRuby": "大野くんとは<ruby>幼稚園<rt>ようちえん</rt></ruby>からの",
-  "afterRuby": "の<ruby>仲<rt>なか</rt></ruby>で、<ruby>彼<rt>かれ</rt></ruby>のことなら何でも知っている。",
-  "kanji": "旧知",
-  "reading": "きゅうち"
- },
- {
-  "num": 29,
-  "before": "<ruby>蔵書<rt>ぞうしょ</rt></ruby>の図書",
-  "target": "モクロク",
-  "after": "をつくる。",
-  "beforeRuby": "<ruby>蔵書<rt>ぞうしょ</rt></ruby>の図書",
-  "afterRuby": "をつくる。",
-  "kanji": "目録",
-  "reading": "もくろく"
- },
- {
-  "num": 30,
-  "before": "学校の<ruby>裏通<rt>うらどお</rt></ruby>りは車の",
-  "target": "オウライ",
-  "after": "が少なく安全である。",
-  "beforeRuby": "学校の<ruby>裏通<rt>うらどお</rt></ruby>りは車の",
-  "afterRuby": "が少なく安全である。",
-  "kanji": "往来",
-  "reading": "おうらい"
- },
- {
-  "num": 31,
-  "before": "年に四回、<ruby>季節<rt>きせつ</rt></ruby>ごとに",
-  "target": "カンコウ",
-  "after": "される雑誌を定期<ruby>購読<rt>こうどく</rt></ruby>する。",
-  "beforeRuby": "年に四回、<ruby>季節<rt>きせつ</rt></ruby>ごとに",
-  "afterRuby": "される雑誌を定期<ruby>購読<rt>こうどく</rt></ruby>する。",
-  "kanji": "刊行",
-  "reading": "かんこう"
- },
- {
-  "num": 32,
-  "before": "<ruby>伝統的<rt>でんとうてき</rt></ruby>な",
-  "target": "ギホウ",
-  "after": "を用いて日本家屋を<ruby>建<rt>た</rt></ruby>てる。",
-  "beforeRuby": "<ruby>伝統的<rt>でんとうてき</rt></ruby>な",
-  "afterRuby": "を用いて日本家屋を<ruby>建<rt>た</rt></ruby>てる。",
-  "kanji": "技法",
-  "reading": "ぎほう"
- },
- {
-  "num": 33,
-  "before": "<ruby>青函<rt>せいかん</rt></ruby>トンネルは",
-  "target": "エイエン",
-  "after": "に<ruby>続<rt>つづ</rt></ruby>くかと思われる長さだった。",
-  "beforeRuby": "<ruby>青函<rt>せいかん</rt></ruby>トンネルは",
-  "afterRuby": "に<ruby>続<rt>つづ</rt></ruby>くかと思われる長さだった。",
-  "kanji": "永遠",
-  "reading": "えいえん"
- },
- {
-  "num": 34,
-  "before": "<ruby>怪<rt>あや</rt></ruby>しげな<ruby>一団<rt>いちだん</rt></ruby>は",
-  "target": "カメン",
-  "after": "で顔を<ruby>隠<rt>かく</rt></ruby>していた。",
-  "beforeRuby": "<ruby>怪<rt>あや</rt></ruby>しげな<ruby>一団<rt>いちだん</rt></ruby>は",
-  "afterRuby": "で顔を<ruby>隠<rt>かく</rt></ruby>していた。",
-  "kanji": "仮面",
-  "reading": "かめん"
- },
- {
-  "num": 35,
-  "before": "父は",
-  "target": "フなれ",
-  "after": "な手つきでおにぎりを<ruby>握<rt>にぎ</rt></ruby>っていた。",
-  "beforeRuby": "父は",
-  "afterRuby": "な手つきでおにぎりを<ruby>握<rt>にぎ</rt></ruby>っていた。",
-  "kanji": "不慣れ",
-  "reading": "ふなれ"
- },
- {
-  "num": 36,
-  "before": "<ruby>誰<rt>だれ</rt></ruby>がどう",
-  "target": "さかだち",
-  "after": "しても、<ruby>彼<rt>かれ</rt></ruby>の足の速さにはかなわない。",
-  "beforeRuby": "<ruby>誰<rt>だれ</rt></ruby>がどう",
-  "afterRuby": "しても、<ruby>彼<rt>かれ</rt></ruby>の足の速さにはかなわない。",
-  "kanji": "逆立ち",
-  "reading": "さかだち"
- },
- {
-  "num": 37,
-  "before": "<ruby>新幹線<rt>しんかんせん</rt></ruby>のおかげで<ruby>長距離<rt>ちょうきょり</rt></ruby>の",
-  "target": "イドウ",
-  "after": "が楽になった。",
-  "beforeRuby": "<ruby>新幹線<rt>しんかんせん</rt></ruby>のおかげで<ruby>長距離<rt>ちょうきょり</rt></ruby>の",
-  "afterRuby": "が楽になった。",
-  "kanji": "移動",
-  "reading": "いどう"
- },
- {
-  "num": 38,
-  "before": "<ruby>満開<rt>まんかい</rt></ruby>の",
-  "target": "よざくら",
-  "after": "を目にして、その美しさに息をのんだ。",
-  "beforeRuby": "<ruby>満開<rt>まんかい</rt></ruby>の",
-  "afterRuby": "を目にして、その美しさに息をのんだ。",
-  "kanji": "夜桜",
-  "reading": "よざくら"
- },
- {
-  "num": 39,
-  "before": "<ruby>誰<rt>だれ</rt></ruby>にでもわかるように",
-  "target": "メイカイ",
-  "after": "で<ruby>簡潔<rt>かんけつ</rt></ruby>な<ruby>説明<rt>せつめい</rt></ruby>をする。",
-  "beforeRuby": "<ruby>誰<rt>だれ</rt></ruby>にでもわかるように",
-  "afterRuby": "で<ruby>簡潔<rt>かんけつ</rt></ruby>な<ruby>説明<rt>せつめい</rt></ruby>をする。",
-  "kanji": "明快",
-  "reading": "めいかい"
- },
- {
-  "num": 40,
-  "before": "<ruby>授業<rt>じゅぎょう</rt></ruby>が終わったら、",
-  "target": "よりみち",
-  "after": "をせずまっすぐ家に帰る。",
-  "beforeRuby": "<ruby>授業<rt>じゅぎょう</rt></ruby>が終わったら、",
-  "afterRuby": "をせずまっすぐ家に帰る。",
-  "kanji": "寄り道",
-  "reading": "よりみち"
- }
+  Q(41, `<ruby>叔母<rt>おば</rt></ruby>の`, 'いとなむ', `<ruby>山奥<rt>やまおく</rt></ruby>の<ruby>温泉宿<rt>おんせんやど</rt></ruby>で、一夏を<ruby>過<rt>す</rt></ruby>ごした。`, '営む'),
+  Q(42, `ロシアから<ruby>招<rt>まね</rt></ruby>いたバレエ<ruby>団<rt>だん</rt></ruby>の`, 'コウエン', `は<ruby>大盛況<rt>だいせいきょう</rt></ruby>だった。`, '公演'),
+  Q(43, `あまりにも身体があつくてだるいので、`, 'ゲネツ', `<ruby>剤<rt>ざい</rt></ruby>を服用した。`, '解熱'),
+  Q(44, ``, 'セイギ', `感が強すぎるために人とぶつかることが多い。`, '正義'),
+  Q(45, `こっそりと<ruby>敵<rt>てき</rt></ruby>の`, 'ホウイ', `をぬけだし、味方と連絡をつける。`, '包囲'),
+  Q(46, `長雨で<ruby>収穫<rt>しゅうかく</rt></ruby>が<ruby>減<rt>へ</rt></ruby>り、<ruby>野菜<rt>やさい</rt></ruby>の`, 'あたい', `が<ruby>高騰<rt>こうとう</rt></ruby>している。`, '値'),
+  Q(47, `母の形見の<ruby>指輪<rt>ゆびわ</rt></ruby>をなくし、`, 'ちまなこ', `になって<ruby>探<rt>さが</rt></ruby>した。`, '血眼'),
+  Q(48, `十八<ruby>歳<rt>さい</rt></ruby>で親元を<ruby>離<rt>はな</rt></ruby>れ、<ruby>故郷<rt>こきょう</rt></ruby>を去ってから`, 'ひさしい', `。`, '久しい'),
+  Q(49, `コンビニは、平日や休日に<ruby>関<rt>かか</rt></ruby>わらず年中`, 'エイギョウ', `している。`, '営業'),
+  Q(50, `みんなの`, 'ハンノウ', `を見てから、自分の意見を<ruby>述<rt>の</rt></ruby>べる。`, '反応'),
+  Q(51, `一度<ruby>犯<rt>おか</rt></ruby>した`, 'あやまち', `を二度とくり返さないようにする。`, '過ち'),
+  Q(52, `<ruby>恵<rt>めぐ</rt></ruby>まれない子どものために、<ruby>児童福祉<rt>じどうふくし</rt></ruby>`, 'キキン', `が<ruby>設立<rt>せつりつ</rt></ruby>される。`, '基金'),
+  Q(53, `地方の村によっては古い`, 'インシュウ', `が根強く<ruby>残<rt>のこ</rt></ruby>っている。`, '因習'),
+  Q(54, `漢字`, 'かな', `<ruby>交<rt>ま</rt></ruby>じり文は、日本<ruby>独特<rt>どくとく</rt></ruby>のものだ。`, '仮名'),
+  Q(55, `けやきの太い`, 'みき', `を利用してうすを作る。`, '幹'),
+  Q(56, `「<ruby>海道記<rt>かいどうき</rt></ruby>」は、京都と<ruby>鎌倉<rt>かまくら</rt></ruby>を<ruby>往復<rt>おうふく</rt></ruby>した旅の`, 'キコウ', `文だ。`, '紀行'),
+  Q(57, `事業の<ruby>拡大<rt>かくだい</rt></ruby>に<ruby>伴<rt>ともな</rt></ruby>い、本社を<ruby>大阪<rt>おおさか</rt></ruby>から東京に`, 'うつす', `ことにした。`, '移す'),
+  Q(58, `<ruby>生徒<rt>せいと</rt></ruby>会長の<ruby>提案<rt>ていあん</rt></ruby>が、全校生徒の<ruby>投票<rt>とうひょう</rt></ruby>で`, 'カケツ', `された。`, '可決'),
+  Q(59, `<ruby>緊張<rt>きんちょう</rt></ruby>で<ruby>汗<rt>あせ</rt></ruby>の<ruby>浮<rt>う</rt></ruby>かんだ`, 'ひたい', `をハンカチでぬぐう。`, '額'),
+  Q(60, `自らの<ruby>経験<rt>けいけん</rt></ruby>と<ruby>実験結果<rt>じっけんけっか</rt></ruby>に`, 'もとづい', `て<ruby>推論<rt>すいろん</rt></ruby>をたてる。`, '基づい')
 ];
+
 let current = 0;
 let flipped = false;
 let results = new Array(questions.length).fill(null);
@@ -459,8 +299,9 @@ function renderCard() {
       <button class="btn-correct" id="btnCorrect" disabled>正解</button>
       <button class="btn-incorrect" id="btnIncorrect" disabled>間違えた</button>
     </div>
-    <div class="nav">${current + 1} / ${questions.length}</div>
+    <div class="nav"><button class="back-btn" id="btnBack" ${current === 0 ? 'disabled' : ''}>← 前へ</button>${current + 1} / ${questions.length}</div>
   `;
+  document.getElementById('btnBack').addEventListener('click', goBack);
   const card = document.getElementById('card');
   adjustCardHeight();
   card.addEventListener('click', () => {
@@ -505,6 +346,13 @@ function mark(result) {
   renderCard();
 }
 
+function goBack() {
+  if (current <= 0) return;
+  current--;
+  results[current] = null;
+  renderCard();
+}
+
 function renderSummary() {
   const app = document.getElementById('app');
   const missed = questions.filter((q, i) => results[i] === 'incorrect');
@@ -522,9 +370,10 @@ function renderSummary() {
       <h2>結果</h2>
       <div class="score">${correctCount} / ${questions.length} 問正解</div>
       ${missHtml}
-      <button class="restart-btn" id="restartBtn">もう一度</button>
+      <button class="back-btn" id="backBtn">← 前へ</button><button class="restart-btn" id="restartBtn">もう一度</button>
     </div>
   `;
+  document.getElementById('backBtn').addEventListener('click', goBack);
   document.getElementById('restartBtn').addEventListener('click', restart);
   document.getElementById('progress').innerHTML = '';
 }
